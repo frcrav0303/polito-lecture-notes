@@ -1,0 +1,37 @@
+\documentclass[10pt, a4paper, twocolumn, twoside, landscape]{article}
+
+% Preamble
+\input{/Users/frcrav/Desktop/LaTeX/shared_pre/lecture_notes/preamble.tex} % Shared pre
+\input{course.tex} % Course specific pre
+
+%	ARTICLE INFORMATION
+%----------------------------------------------------------------------------------------
+\coursetitle{Automazione industriale} % Title of the course
+\datenotesstarted{Fall 2025} % The date when these notes were first made
+\docdate{\datenotesstarted; upd. \today} % The date when the notes were lasted updated (automatically the current date)
+\docauthor{Federico Cravero} % Author
+\lesyear{2025/2026}
+
+\begin{document}
+
+\nocite{*}
+\thispagestyle{plain} % Plain formatting on the first page
+\printtitle{} % Print the title 
+%----------------------------------------------------------------------------------------
+
+\toc{} % Table of contents
+
+% Lectures
+\input{lectures/lec_01.tex}
+\input{lectures/ass_01.tex}
+
+\input{lectures/lec_02.tex}
+\input{lectures/ass_02.tex}
+
+
+% doc end (bib)
+\input{lectures/!last.tex}
+\vfill
+\renewcommand{\refname}{References} % Bibliography title
+\bibliography{citations} % Input bibliography
+\end{document}

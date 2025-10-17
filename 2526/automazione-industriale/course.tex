@@ -1,0 +1,71 @@
+% Course personal preamble
+% Here you can put course related command, acronyms etc
+\newacronym{mat}{Matlab}{Matrix Laboratory}
+
+% Matlab enviroments
+\lstdefinestyle{Matlab-editor}{
+	language=Matlab,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{orange},
+	numberstyle=\tiny\color{gray},
+	backgroundcolor=\color{gray!5},
+	frame=single,
+	rulecolor=\color{black!20},
+	breaklines=true,
+	showstringspaces=false
+}
+
+% Definizione di uno stile per MATLAB
+\lstdefinestyle{Matlab-pretty}{
+	frame=tb,
+	framerule=0.1px,
+	language=Matlab,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue},
+	commentstyle=\color{gray},
+	stringstyle=\color{orange},
+	numberstyle=\color{gray},
+	numbers=left,
+    showstringspaces=false,
+	xleftmargin=4em,   % margine a sinistra
+	xrightmargin=4em   % margine a destra
+}
+
+\lstnewenvironment{matlab}[1][]{
+  \lstset{
+	style=Matlab-pretty,
+    #1
+  }
+}{}
+
+% ----- MATLAB Console Style -----
+\lstdefinestyle{Matlab-console}{
+    language=Matlab,
+	title=\sffamily Output Console,
+    basicstyle=\ttfamily\small\color{black}, % testo nero tipo console
+    backgroundcolor=\color{black!2},         % leggero grigio di sfondo
+    frame=tb,                                % solo bordi sopra e sotto
+    framerule=0.3pt,
+    rulecolor=\color{black!40},
+    xleftmargin=4em,
+    xrightmargin=4em,
+	numberstyle=\color{gray},
+    numbers=left,                            % nessun numero di linea
+    showstringspaces=false,
+    breaklines=true,
+    keywordstyle=\color{black},              % niente evidenziazione keyword
+    commentstyle=\color{gray},               % commenti più spenti
+    stringstyle=\color{gray!60},             % stringhe leggermente più chiare
+    upquote=true
+}
+
+% ----- MATLAB Console Environment -----
+\lstnewenvironment{matlabconsole}[1][]{
+  \medskip
+  \lstset{
+    style=Matlab-console,
+    #1
+  }
+}{}

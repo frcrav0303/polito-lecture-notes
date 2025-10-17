@@ -1,0 +1,477 @@
+\lecture{Matlab}{02/10/2025}
+\section{Matlab Basics}
+\gls{mat} è un ambiente di programmazione e calcolo numerico. 
+
+È progettato per:
+\begin{itemize}
+    \item  manipolazione di matrici e vettori,
+    \item  simulazione numerica,
+    \item  visualizzazione grafica,
+    \item  sviluppo di algoritmi scientifici o ingegneristici.
+\end{itemize}
+È praticamente una via di mezzo tra un linguaggio di programmazione e una potente calcolatrice scientifica.
+
+Nel testo vengono utilizzati i seguenti file su MATLAB\_R2025b:
+\begin{itemize}
+    \item  \verb|helloworld.m|
+    \item  \verb|matrix.m|
+\end{itemize}
+%
+\subsection{Printing}
+Per stampare valori di ritorno, contenuti di variabili etc \dots non si inserisce il \verb|;| al termine di un 
+espressione. Non inserendo tale carattere farà stampare in console.
+\subsubsection{Printing functions}
+Si può generare l'output su schermo tramite diverse funzioni, principalmente tramite: \verb|disp()| e \verb|fprintf()|.
+I due metodi differiscono per flessibilità e formato dell'output.
+\paragraph{Funzione disp()}
+La funzione \verb|disp()| (display) è il metodo più semplice per visualizzare variabili o
+messaggi testuali. Non consente la formattazione avanzata ma è utile per una stampa rapida.
+
+\verb|disp('Hello World')| stamperà una stringa, \verb|disp(A)| stampa cosa è contenuto nella variabile A.
+
+Con \verb|disp()| si può stampare unicamente una variabile/stringa, non è possibile quindi concatenare variabili
+o stringhe con variabili.   
+
+\begin{note}
+Si può osservare che la funzione \verb|disp()| fa veramente cagare.
+\end{note}
+
+\paragraph{Funzione fprintf()}
+La funzione \verb|fprintf()| (formatted print) permette un controllo più preciso sul formato dell'output.
+Può essere utilizzato per stampare testo, numeri e variabili all'interno della stessa stringa.
+\begin{verbatim}
+fprintf('Il valore di x è: %d\n', x)
+fprintf('Il risultato è: %.2f\n', y)
+\end{verbatim} 
+Dove:
+\begin{itemize}
+	\item \texttt{\%d} indica un numero intero;
+	\item \texttt{\%.2f} indica un numero reale con due cifre decimali;
+	\item \texttt{\textbackslash n} va a capo (new line).
+\end{itemize}
+
+%
+\subsection{Variables}
+Non vi è il bisogno di esplicitare il tipo di variabile. Per assegnare un valore ad una variabile: 
+\[ 
+  x=3 \cdot 2
+\] 
+In questo caso, la varibile $ x $, autodichiarata come \emph{double} (più a riguardo dopo), avrà conservato all'intero
+$ 6 $.
+
+Se non vengono specificate variabili, ad esempio nel caso in cui l'espressione sia solo $ 3 \cdot 2 $, nella console verrà
+stampata una variabile direttamente assegnata da Matlab, di nome \emph{``ans''} , che verrà sovrascritta
+ogni volta che verrà stampato un valore non contenuto in una variabile. 
+
+\subsubsection{Data types}
+In Matlab si utilizzando diversi tipi di variabile, per scopi diversi e con diverse grandezze.
+Tra le più utilizzate:
+\begin{itemize}
+    \item \textbf{double}: Array a doppia precisione
+    \item \textbf{single}: Array a precisione singola
+    \item \textbf{int8}\dots \textbf{int64}:: Array di numeri interi con segno da 8 fino a 64 bit
+    \item \textbf{uint8}\dots \textbf{uint64}:: Array di numeri interi senza segno da 8 fino a 64 bit
+\end{itemize}
+
+\marginnote{continua\dots}
+
+%
+\subsection{Vectors}
+Vi sono due tipi di vettori:
+\paragraph{Row vectors} 
+Per definire un row vector si utilizza:
+\begin{verbatim}
+x=[1,2,3] oppure x=[1 2 3]
+\end{verbatim}
+Entrambe le diciture sono valide, il vettore riga può essere dichiarato sia con le virgole che con gli spazi.
+
+\paragraph{Column vectors}
+Per definire un column vector si utilizza:
+\begin{verbatim}
+x=[1;2;3]
+\end{verbatim}
+Il vettore colonna, a differenza di quello a riga, può essere definito solamente con i \verb|;|.
+
+\subsubsection{Functions and vector manipulation}
+\paragraph{length(x)} 
+La funzione \verb|length(x)| ritorna la lunghezza del vettore \verb|x|.
+\paragraph{Accessing the k-th value of a vector}
+Per accedere al valore k-esimo di un vettore si utilizza:
+\begin{verbatim}
+x(k), x(end)
+\end{verbatim}
+Tramite \verb|x(k)| si accede al k-esimo valore del vettore (cioè il valore di indice k, indici contati
+a partire da 0), tramite \verb|x(end)| si accede al valore di ultima posizione, ovvero quello con indice più
+grande.
+
+\paragraph{Vector manipulation}
+Due vettori possono essere concatenati insieme, ammesso che abbiano la stessa dimensione, tramite:
+\begin{verbatim}
+z[xy], z[x;y]
+\end{verbatim} 
+Entrambe le diciture sono valide.
+
+Si può eliminare un valore contenuto nel vettore di una certa posizione k tramite:
+\begin{verbatim}
+x(k)=[]
+\end{verbatim} 
+
+\paragraph{Creation of n-dimensional vectors}
+Si possono creare vettori n-dimensionali tramite:
+\begin{verbatim}
+zeros(n,1), zeros(1,n);
+ones(n,1), ones(1,n);
+\end{verbatim}
+Questi creano un vettore di lunghezza e altezza n pieni di 0 (zeros) o 1 (ones). 
+Deve essere presente minimo 1 colonna/riga.
+\begin{matlab}
+zeros(2,5)
+ones(5,2)
+\end{matlab}
+Risulta in output:
+\begin{matlab}
+ans =
+    0   0   0   0   0
+    0   0   0   0   0
+
+ans =
+    1   1
+    1   1
+    1   1
+    1   1
+    1   1
+\end{matlab}
+
+Si può creare un vettore riga di n punti equidistanti compresi tra \emph{a} e \emph{b} tramite:
+\begin{verbatim}
+linspace(a,b,n)
+\end{verbatim} 
+\begin{example}
+    Creazione di un vettore tramite linspace di arg: \verb|1,2,4|.
+\end{example} 
+\begin{matlab}
+linspace(1,2,4)
+\end{matlab}
+Da come output:
+\begin{matlab}
+ans =
+1.0000  1.3333  1.6667  2.0000
+\end{matlab}
+
+\bigskip
+Mentre il seguente:
+\begin{matlab}
+a=1;
+b=5;
+k=b;
+linspace(a,b,k)
+\end{matlab}
+Da come output:
+\begin{matlab}
+ans =
+1   2   3   4   5
+\end{matlab}
+
+\bigskip
+Per creare un vettore riga di n punti equidistanti con salti s, si utilizza:
+\begin{verbatim}
+a:s:b
+\end{verbatim} 
+dove \verb|s| è il nostro \emph{``step''}. 
+\begin{example}
+    Creazione di un vettore riga con salti di 0.25. 
+\end{example} 
+\begin{matlab}
+0:0.25:1
+\end{matlab}
+\begin{matlabconsole}
+ans =
+0   0.2500  0.5000  0.7500  1.0000
+\end{matlabconsole}
+
+\subparagraph{Calculate a vector's p-norm}
+Dato un vettore $ x $, si può calcolare la trasposta $ x' $ e la sua p-norm tramite:
+\begin{verbatim}
+norm(x,p)
+\end{verbatim} 
+\begin{example}
+\end{example} 
+\begin{matlab}
+% Create vector
+k=4;
+a = linspace (1,5,k);
+b = linspace (3,8,k);
+c = linspace (21,34,k);
+x =[a;b;c]
+
+% Calc p-norm
+norm(x,1)
+\end{matlab}
+\begin{matlabconsole}
+x =
+1.0000  2.3333  3.6667  5.0000
+3.0000  4.6667  6.3333  8.0000
+21.0000 25.3333 29.6667 34.0000
+
+ans =
+47
+\end{matlabconsole}
+
+\paragraph{Maximun \& minimun}
+Il massimo e minimo di un vettore può essere computato tramite:
+\begin{verbatim}
+max(x), min(x)
+\end{verbatim}
+
+\begin{example}
+Calcolo del max e del min del vettore $ m $
+\end{example} 
+\begin{matlab}
+y=[1,3,5];
+x=[2,4,6];
+m=[y;x];
+
+m=max(m)
+n=min(m)
+\end{matlab}
+\begin{matlabconsole}
+m =
+
+     2     4     6
+
+
+n =
+
+     2
+\end{matlabconsole}
+
+\subsubsection{Operations with vectors}
+Dati due vettori (row vectors) $ x $ ed $ y $ di dimensione $ n $, possiamo computare la loro
+somma $ x+y $ ed il loro prodotto scalare $ x \cdot y' $. 
+\begin{example}
+Calcolo della somma e del prodotto scalare dei vettori $ x $ e $ y $.
+\end{example}
+
+\begin{matlab}
+x=[1,5,8];
+y=[3,6,1];
+
+s=x+y
+p=x*y'
+\end{matlab}
+\begin{matlabconsole}
+s =
+
+     4    11     9
+
+
+p =
+
+    41
+\end{matlabconsole}
+Come si può vedere, per calcolare il prodotto scalare $ x \cdot y' $ abbiamo dovuto indicare $ y' $ 
+nella riga di codice. Si potrebbe utilizzare anche il seguente metodo:
+\begin{verbatim}
+p = dot(x,y)
+\end{verbatim} 
+che restituisce lo stesso risultato. L'ultimo metodo menzionato è utile ricordarlo, poiché lo si può
+utilizzare anche insieme ad altri tipi di vettori (non solo riga). A riguardo più avanti.
+
+\paragraph{Entry-wise operations}
+In Matlab, vi sono due tipi di operazioni fattibili tra matrici:
+\begin{enumerate}
+    \item Operazioni matriciali: \verb|a*b|
+    \item Operazioni entry-wise: \verb|a.*b|
+\end{enumerate}
+\subparagraph{Matrix operations}
+Avendo due matrici $ a $ e $ b $, di grandezza uguale, si possono effettuare operazioni
+come moltiplicazione, frazione e potenza che rispettano le regole dell'algebra lineare.
+\begin{matlab}
+A = [1 2; 3 4];
+B = [5 6; 7 8];
+A*B          % prodotto tra matrici
+\end{matlab}
+
+\subparagraph{Entry-wise operations}
+Avendo due matrici $ a $ e $ b $, si possono fare operazioni su singoli elementi corrispondenti (quindi
+elemento per elemento) posizionando un \verb|.| prima del simbolo dell'operatore, ad esempio:
+\begin{verbatim}
+a.*b, a./b, a.^b
+\end{verbatim} 
+\begin{matlab}
+A = [1 2; 3 4];
+B = [5 6; 7 8];
+A.*B          % Moltiplicazione
+\end{matlab}
+
+\section{Matrices}
+Per definire una matrice $ A $ si utilizza:
+\begin{verbatim}
+A=[1 2 3; 4 5 6]
+\end{verbatim} 
+Scritta in termini matematici:
+\[ A = 
+  \begin{bmatrix}
+  1 & 2 & 3 \\
+  4 & 5 & 6
+  \end{bmatrix}
+\] 
+
+\paragraph{Matrix size}
+Per avere la grandezza della matrice A, si utilizza la funzione \verb|size(A)|
+
+\subsection{Special matrices}
+Vi sono inoltre le seguenti matrici speciali:
+\begin{verbatim}
+ones(n,m), zeros(n,m), eye(n)
+\end{verbatim} 
+
+\begin{example}
+Stampa di matrici speciali (uno, zero e matrice identità).
+\end{example} 
+\begin{matlab}
+% Matrice di soli 1 (3x3)
+A = ones(3, 3);
+% Matrice di soli 0 (2x4)
+B = zeros(2, 4);
+% Matrice identita' (4x4)
+C = eye(4);
+
+% Stampa risultati
+disp('A=ones(3,3):')
+disp(A)
+disp('B=zeros(2,4):')
+disp(B)
+disp('C=eye(4):')
+disp(C)
+\end{matlab}
+\begin{matlabconsole}
+>> matrix
+A = ones(3,3):
+     1     1     1
+     1     1     1
+     1     1     1
+
+B = zeros(2,4):
+     0     0     0     0
+     0     0     0     0
+
+C = eye(4):
+     1     0     0     0
+     0     1     0     0
+     0     0     1     0
+     0     0     0     1
+\end{matlabconsole}
+
+\subsection{Functions and matrix manipulation}
+Tutte le operazioni già definite per i vettori possono essere utilizzate con le matrici, anche i comandi
+utilizzati per la manipolazione, per quest'ultimi bisogna però prestare particolare attenzione alle dimensioni!
+
+\paragraph{Accessing the k-th value of a matrix}
+Per accedere al valore k-esimo di una matrice si utilizza:
+\begin{verbatim}
+A(:.k)
+\end{verbatim}
+Tramite \verb|A(:.k)| si accede al k-esimo valore della matrice (cioè il valore di indice k, indici contati
+a partire da 0).
+
+\paragraph{diag(A)} Avendo una matrice $ A $, la funzione \verb|diag(A)| estrae la diagonale della matrice.
+Avendo un vettore $ x $, la funzione \verb|diag(x)| ritorna una matrice diagonale del vettore $ x $.
+
+\paragraph{Eigenvalues and eigenvectors} Prima di tutto, diamo una rinfrescata sulla definizione degli autovalori
+e delle matrici inverse:
+\begin{definition}[Autovalore e autovettore di una matrice quadrata]
+Sia $ A $ una matrice quadra $ n \times n $. 
+
+Un numero $ \lambda \in \R $ e un vettore non nullo $ v \in \R^n $ soddisfano:
+\[ 
+  Av=\lambda v
+\] 
+
+Allora:
+\begin{itemize}
+    \item $ \lambda $ è un autovalore (eigenvalue) di $ A $;
+    \item $ v $ è un autovettore (eigenvector) associato a $ \lambda $.
+\end{itemize}
+\end{definition}
+Dal punto di vista geometrico:
+\begin{itemize}
+    \item L'autovettore indica una direzione invariata dalla trasformazione.
+    \item L'autovalore indica di quanto quella direzione viene scalata:
+        \begin{itemize}
+            \item se $ \lambda > 1 $: la direzione si allunga;
+            \item se $ 0 < \lambda < 1 $: si accorcia;
+            \item se $ \lambda < 0 $: si inverte. 
+        \end{itemize}
+\end{itemize}
+\begin{example}
+Data la matrice 
+\[ 
+  A=
+  \begin{bmatrix}
+  2 & 0 \\
+  0 & 3
+  \end{bmatrix}
+\] calcolare l'autovalore e l'autovettore.
+\end{example} 
+\begin{matlab}
+A = [2 0; 0 3];
+eig(A)
+inv(A)
+\end{matlab}
+\begin{matlabconsole}
+ans =
+
+     2
+     3
+
+
+ans =
+
+    0.5000         0
+         0    0.3333
+\end{matlabconsole}
+
+\paragraph{linsolve(A,b)} Dato un sistema lineare $ Ax=b $, dove $ A $ è la matrice dei coefficienti, $ x $
+è il vettore incognito e $ b $ è il vettore dei termini noti. 
+Il comando \verb|linsolve(A,b)| permette di risolvere il sistema lineare, quindi di trovare l'incognita $ x $.
+\begin{example}
+Dato il seguente sistema lineare:
+\[ 
+  \begin{cases}
+        2x_1 + x_2 = 5 \\
+        3x_1 + 4x_2 = 6
+    \end{cases}
+\] 
+trovare il valore di $ x_{1} $ e $ x_{2} $.
+\end{example} 
+Sistema lineare in forma matriciale:
+\[ A=
+    \begin{bmatrix}
+        2 & 1 \\
+        3 & 4
+    \end{bmatrix},
+    b=
+    \begin{bmatrix}
+    5 \\ 6
+    \end{bmatrix}
+\] 
+\begin{matlab}
+A = [2 1; 3 4];   % matrice 2x2
+b = [5; 6];       % vettore colonna
+
+x = linsolve(A, b)
+\end{matlab}
+\begin{matlabconsole}
+>> matrix
+
+x =
+
+    2.8000
+   -0.6000
+\end{matlabconsole}
+Significa quindi che:
+\begin{align*}
+    x_{1}&=2.8 \\
+    x_{2}&=-0.6
+\end{align*}
