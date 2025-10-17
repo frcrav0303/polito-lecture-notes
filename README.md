@@ -1,2 +1,2 @@
-# lecture_notes
+# frcrav PoliTO Lecture Notes
 lecture notes polito
