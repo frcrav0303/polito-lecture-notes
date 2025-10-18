@@ -10,7 +10,7 @@ Do not take them as professional or official material.
   - `main.tex` — Main LaTeX file
   - `lectures/` — Individual lecture files
   - `info.yaml` — Course metadata
-  - `main.pdf` — Compiled output
+  - `out/main.pdf` — Compiled output
 
 ## Snippets
 These are my personal LaTeX snippets, created for faster note writing.  
