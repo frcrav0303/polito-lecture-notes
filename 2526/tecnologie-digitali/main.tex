@@ -1,0 +1,32 @@
+\documentclass[10pt, a4paper, twocolumn, twoside, landscape]{article}
+
+% Preamble
+\input{/Users/frcrav/Desktop/LaTeX/shared_pre/lecture_notes/preamble.tex} % Shared
+\input{course.tex} %
+
+%
+
+\coursetitle{Tecnologie Digitali 4.0} %
+\datenotesstarted{Fall 2025} %
+\docdate{\datenotesstarted; upd. \today} %
+\docauthor{Federico Cravero} %
+\lesyear{2025-2026} %
+
+\begin{document}
+
+\nocite{*} %
+\thispagestyle{plain} % Plain formatting on the first page
+\printtitle{} % Print the title
+%----------------------------------------------------------------------------------------
+
+\toc{} % Table of contents
+
+% Lectures
+\input{lectures/lec_01.tex}
+
+% doc end
+\input{lectures/!last.tex}
+\vfill
+\renewcommand{\refname}{References} % Bibliography title
+\bibliography{citations} % Input bibliography
+\end{document}
