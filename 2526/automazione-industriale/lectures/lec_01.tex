@@ -15,6 +15,8 @@ All'interno della directory: \verb|../MATLAB/PoliTO/| si possono trovare le dive
 
 La versione di Matlab utilizzata è la seguente: \textbf{MATLAB\_R2025b (2025)}.
 
+Durante il corso, si farà riferimento alle dispense del professore, al crash course~\cite{crashcourse} disponibile su youtube.
+
 %
 \subsection{IDE}
 La \gls{ide} di Matlab si suddivide in 4 zone principali:
@@ -238,7 +240,7 @@ ans =
 \paragraph{Maximun \& minimun}
 Il massimo e minimo di un vettore può essere computato tramite:
 \begin{verbatim}
-max(x), min(x)
+max(x), min(x), [n, i] = max(x)
 \end{verbatim}
 
 \begin{example}
@@ -254,13 +256,25 @@ n=min(m)
 \end{matlab}
 \begin{matlabconsole}
 m =
-
      2     4     6
 
 
 n =
-
      2
+\end{matlabconsole}
+
+Si può utilizzare la stessa funzione e ricevere in ritorno sia il valore max/min, che il suo indice nel vettore $ m $.
+Dato il seguente comando: \verb|x = linspace(1,50,25)|, sappiamo che il valore massimo sarà $ v=50 $, in posizione con indice $ i=25 $:
+\begin{matlab}
+x = linspace(1,50,25);
+[v,i]=max(x)
+\end{matlab}
+\begin{matlabconsole}
+v =
+    50
+
+i =
+    25
 \end{matlabconsole}
 
 \subsubsection{Operations with vectors}
@@ -336,6 +350,23 @@ Non verranno eliminate dalla memoria le variabili presenti nel Workspace!
 \paragraph{clearvars} Tramite il comando \verb|clearvars| si puliscono le variabile immagazzinate in memoria.
 
 \paragraph{whos} Tramite il comando \verb|whos| vengono stampate a terminale le variabili esistenti nel workspace, insieme alla loro grandezza, tipo e dimensione.
+%
+\paragraph{close all} Tramite il comando \verb|close all| verranno chiuse tutte le schede di figure aperte in precedenza. Questo è utile poi quando affronteremo le figure e i plot in sezione~\ref{sec:plots}. % used non-breaking space ~
+
+%
+\paragraph{help} Il comando forse più utile da utilizzare nel terminale Matlab è proprio il comando help. Tramite esso si può avere un'approfondita documentazione di tutte le funzioni presenti, che cosa fanno, cosa ritornano e così dicendo.
+
+Ad esempio, utilizzando la funzione \verb|max(a)|, con $ a $ un vettore di lunghezza $ n $, la funzione mi ritornerà il valore massimo presente nel vettore. Se volessi sapere anche l'indice di quest'ultimo, posso utilizzare: \verb|[val, i] = max(a)|. Ovviamente non è possibile memorizzarsi tutti i modi in cui funzioni posso essere manipolate, ma utilizzando il comando \verb|help| posso leggere che:
+\begin{matlabconsole}
+max - Maximum elements of array
+    Syntax
+      M = max(A)
+      ...
+      [M,I] = max(___)
+\end{matlabconsole}
+
+%
+\subparagraph{doc} A riguardo, posso utilizzare il comando \verb|doc|, che fa la stessa cosa del comando \verb|help|, solo che al posto di stampare in terminale la documentazione della funzione cercata, apre un link alla documentazione Matlab presente sul loro sito web.
 
 %
 \subsection{Operations}
@@ -459,14 +490,35 @@ C = eye(4):
 Tutte le operazioni già definite per i vettori possono essere utilizzate con le matrici, anche i comandi
 utilizzati per la manipolazione, per quest'ultimi bisogna però prestare particolare attenzione alle dimensioni!
 
-\paragraph{Accessing the k-th value of a matrix}
-Per accedere al valore k-esimo di una matrice si utilizza:
+\paragraph{Accessing the n value of a matrix}
+Per accedere al valore n di una matrice si utilizza:
 \begin{verbatim}
-A(:.k)
+A(r,c)
 \end{verbatim}
-Tramite \verb|A(:.k)| si accede al k-esimo valore della matrice (cioè il valore di indice k, indici contati
-a partire da 0).
+dove:
+\begin{itemize}
+    \item \verb|r| è la riga che si vuole accedere;
+    \item \verb|c| è la colonna che si vuole accedere.
+\end{itemize}
+In questo modo, verrà stampato il valore $ n $ che si trova in riga \verb|r| e colonna \verb|c|.
 
+Utilizzando:
+\begin{verbatim}
+A(:,k)
+\end{verbatim}
+si accede al k-esimo valore della matrice (cioè il valore di indice k, indici contati
+a partire da \textbf{1}).
+
+Il semicolon (\verb|;|) è come dire ``tutti i valori''. In questo caso, verranno stampati tutti i valori della colonna $ k $ della matrice $ A $.
+Se utilizzassi: \verb|A(k,:)| avrò come output tutti i valori della riga $ k $.
+
+Se volessi accedere ad esempio solo ai valori presenti nella riga 1, in posizione 1, 2 e 3 di una matrice A, lo posso fare tramite:
+\begin{verbatim}
+A(1,1:3)
+\end{verbatim}
+In questo modo mi verranno stampati in output i valori presenti in riga 1, colonna da 1 a 3.
+
+%
 \paragraph{diag(A)} Avendo una matrice $ A $, la funzione \verb|diag(A)| estrae la diagonale della matrice.
 Avendo un vettore $ x $, la funzione \verb|diag(x)| ritorna una matrice diagonale del vettore $ x $.
 
