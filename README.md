@@ -32,6 +32,14 @@ For example: ```makelecture --remove lec_02``` will remove the "lec_02.tex" file
 
 I also added a logging feature, which automatically creates a log file to keep track of all lecture operations — such as creations and deletions.
 All logs are stored in the `logs/` directory, allowing me to easily review the history of changes across courses.
+You won’t see the logs on GitHub, since the `.gitignore` file excludes all log files (most of LaTeX compilations) to keep the repository clean.
+A sample log entry looks like this:
+
+```log
+2025-10-28 15:50:10 [INFO] File will be created at: /Users/frcrav/Desktop/LaTeX/docs/lecture_notes/2526/tecnologie-digitali/lectures/lec_04.tex
+2025-10-28 15:50:11 [INFO] Lecture 'test' created as 'lec_04.tex'.
+2025-10-28 15:50:11 [INFO] Updated main.tex with \input{lectures/lec_04.tex}
+```
 
 ## Snippets
 
