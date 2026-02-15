@@ -1,6 +1,100 @@
-\lecture{Project work basics}{21-10-2025}
-Per il project work verranno utilizzate diverse dispense, tra cui:
+\lecture{Lean Manifacturing}{11~-~01~-~2026}
+%
+Questa lezione introduce i concetti base e le origini della filosofia Lean.
+%
+\section{Fondamenti del LEAN}
+La \gls{lean} è la pratica di eliminazione sistematica degli sprechi nei processi produttivi. \\
+Nasce dal Toyota Production System, il termine è stato reso celebre dal libro ``The Machine That Changed the World'' (Womack, Jones, Roos, 1990).
+Il LEAN, rispetto alla produzione di massa, mira a utilizzare metà delle ore di lavoro, metà dello spazio, un decimo delle scorte e metà delle ore di ingegneria, riducendo drasticamente i difetti, per massimizzare la qualità ed il processo produttivo di un prodotto.
+%
+\subsection{The 3'Ms}
+Vengono racchiusi i 3 principi di inefficienza in 3 parole che iniziano con la ``M'':
 \begin{itemize}
-    \item blabla
-    \item blabla
+    \item \emph{Muda} (spreco): Tutto ciò che non aggiunge valore al prodotto. Esistono 7 tipi principali di spreco:
+          \begin{enumerate}
+              \item Waiting (Attesa): Tempo perso aspettando strumenti o parti.
+              \item Correction (Correzione): Riparazioni o rilavorazioni.
+              \item Motion (Movimento): Movimenti umani inutili (es. camminare per cercare attrezzi).
+              \item Processing (Processo): Fare più lavoro del necessario.
+              \item Inventory (Scorte): Eccesso di materie prime o prodotti finiti.
+              \item Overproduction (Sovrapproduzione): Produrre più del necessario o prima del necessario.
+              \item Conveyance (Trasporto): Trasporto inutile di materiali.
+          \end{enumerate}
+    \item \emph{Mura} (inconsistenza/variabilità): Mancanza di standardizzazione che riduce l'efficienza. Henry Ford sottolineava l'importanza della standardizzazione come base per il miglioramento futuro.
+    \item \emph{Muri} (irrazionalità/sovraccarico): Situazioni irragionevoli, come lamentarsi dei problemi invece di cercare soluzioni.
 \end{itemize}
+Lean richiede una cultura ``Non-Blaming'' (senza colpa). I problemi sono visti come opportunità e le persone non sono il problema, ma i risolutori di problemi.
+%
+\subsection{Metodologia chiave}
+Il termine descrittivo fondamentale del LEAN è ``Kaizen'', che significa ``Miglioramento continuo''. \\
+Composto da ``Kai'' (Cambiamento) e ``Zen'' (Buono). Sono iniziative per eliminare gli sprechi e aumentare la produttività attraverso piccoli passi continui.
+Di seguito vediamo le metodologie chiave per la LEAN.
+\subsubsection{Le 5S}
+Il metodo delle 5S è una metodologia di organizzazione del posto di lavoro, è composta da:
+\begin{enumerate}
+    \item Sort: Separare ciò che serve da ciò che non serve.
+    \item Stabilize: Ordinare efficientemente.
+    \item Shine: Pulizia.
+    \item Standardize: Standardizzare le procedure.
+    \item Sustain: Mantenere la disciplina nel tempo.
+\end{enumerate}
+\subsubsection{Industria Push Pull}
+\begin{itemize}
+    \item \textbf{Push}: Si produce ``just in case' (per scorta), accumulando inventario tra le macchine.
+    \item \textbf{Pull}: Si produce solo quando il cliente (o la fase successiva) lo richiede. Usa il Kanban (cartellino fisico che contiene informazioni) come segnale di autorizzazione.
+\end{itemize}
+\subsubsection{Just in time}
+Il ``just in time'' è la pratica che consiste nel produrre il numero richiesto di parti, al momento giusto. Si basa sul Takt Time, il ritmo che la produzione deve seguire per soddisfare la domanda del cliente.
+Questa pratica evita la sovrapproduzione di prodotti, uno dei principali sprechi e impedimenti nelle linee di produzioni industriali.
+\subsubsection{Sistemi poka-yoke}
+I sistemi ``poka-yoke'', che si traduce in ``a prova di stupido'', sono sistemi che rendono impossibili gli sbagli nella costruzione e produzione di un prodotto.
+\begin{example}
+    La SIM Card è un sistema Poka-Yoke, può essere inserita in un unico verso, con un unico orientamento.
+\end{example}
+
+%
+\section{Principi del LEAN thinking}
+Il pensiero LEAN si divide in 5 principi fondamentali:
+\begin{enumerate}
+    \item Value: Specificare il valore dal punto di vista del cliente.
+    \item Value Stream: Identificare il flusso del valore ed eliminare gli sprechi.
+    \item Flow: Creare un flusso continuo.
+    \item Pull: Lasciare che sia il cliente a ``tirare'' la produzione.
+    \item Perfection: Puntare alla perfezione (Kaizen, miglioramento infinito).
+\end{enumerate}
+
+%
+\section{Integrazione del LEAN all'industria 4.0}
+Lean e Industry 4.0 non sono opposti, ma collaborano. L'Industry 4.0 è vista come la risposta occidentale all'approccio Lean giapponese.
+Le tecnologie 4.0 aumentano la maturità della Lean Manufacturing, ad esempio:
+\begin{itemize}
+    \item Il \gls{jit} diventa più preciso con dati in tempo reale;
+    \item Il Kanban viene potenziato digitalmente (e-Kanban);
+    \item Il Poka-Yoke diventa ``smart'' usando dati in tempo reale per prevenire errori.
+\end{itemize}
+\begin{example}
+    Esempi di tecnologie dove vi si può trovare la LEAN e l'industria 4.0 possono essere:
+    \begin{itemize}
+        \item Big Data Analytics, che supportano il JIT e la manutenzione predittiva (TPM);
+        \item AGV (Veicoli a guida autonoma), migliorano la logistica interna e supportano il flusso;
+        \item Cloud \& Simulation, utili per 5S digitali, SMED (cambio stampi rapido) e Digital Twin.
+    \end{itemize}
+\end{example}
+
+%
+\section{Caso di studio: applicazione automotive}
+Ora vediamo un esempio pratico di transizione da Lean tradizionale a Lean 4.0.
+%
+\paragraph{Situazione di partenza} Uso di cartellini fisici Kanban classici per gestire il flusso tra magazzino (Door 10) e produzione.\\
+\emph{Problema}: Rischio di perdere i cartellini, necessità di camminare per l'officina, tempo perso.
+%
+\paragraph{Soluzione Lean 4.0} LeaTechRP: Integrazione di Kanban + RFID + IIoT. \\
+Adesso ci ritroviamo con schermi per visualizzare i Kanban digitali e terminali RFID per tracciare la logistica ed eliminare i cartellini fisici.
+%
+\subsection{Come gestire la transizione a Lean 4.0}
+Facciamo prima una premessa sul fattore umano: le persone sono \emph{insostituibili}. L'Industry 4.0 deve convertire attività senza valore in attività a valore aggiunto per l'uomo. La resistenza al cambiamento è un fattore limitante critico.
+Ora possiamo vedere i due approcci al cambiamento:
+%
+\paragraph{Sustaining Digital Transformation} Allineata ai principi Lean. Progetti piccoli, incrementali, payback breve. Potenzia gli operatori.
+%
+\paragraph{Disruptive Digital Transformation} Cambiamenti radicali, grandi investimenti, payback medio-lungo. Meno allineata al Lean, focalizzata più sulle macchine che sugli operatori.

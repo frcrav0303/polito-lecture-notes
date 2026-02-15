@@ -27,7 +27,7 @@ La \gls{ide} di Matlab si suddivide in 4 zone principali:
     \item Command window: il ``terminale'' di Matlab, dove vengono stampati i risultati degli script, delle funzioni, o dove vengono stampati i risultati dei comandi inviati nel terminale stesso.
 \end{enumerate}
 \begin{note}
-Nel workspace, se voglio visualizzare in modo più approfondito una variabile, posso cliccare due volte su di essa. Facendo questo si aprirà una scheda (tipo excel) in cui si possono visualizzare tutti i valori contenuti nella variabile. Questo risulterà poi utile per la visualizzazione dei vettori e delle matrici.
+    Nel workspace, se voglio visualizzare in modo più approfondito una variabile, posso cliccare due volte su di essa. Facendo questo si aprirà una scheda (tipo excel) in cui si possono visualizzare tutti i valori contenuti nella variabile. Questo risulterà poi utile per la visualizzazione dei vettori e delle matrici.
 \end{note}
 %
 
@@ -49,7 +49,7 @@ Con \verb|disp()| si può stampare unicamente una variabile/stringa, non è poss
 o stringhe con variabili.
 
 \begin{note}
-Si può osservare che la funzione \verb|disp()| fa veramente cagare.
+    Si può osservare che la funzione \verb|disp()| fa veramente cagare.
 \end{note}
 
 \paragraph{Funzione fprintf()}
@@ -61,16 +61,16 @@ fprintf('Il risultato è: %.2f\n', y)
 \end{verbatim}
 Dove:
 \begin{itemize}
-	\item \texttt{\%d} indica un numero intero;
-	\item \texttt{\%.2f} indica un numero reale con due cifre decimali;
-	\item \texttt{\textbackslash n} va a capo (new line).
+    \item \texttt{\%d} indica un numero intero;
+    \item \texttt{\%.2f} indica un numero reale con due cifre decimali;
+    \item \texttt{\textbackslash n} va a capo (new line).
 \end{itemize}
 
 %
 \subsection{Variables}
 Non vi è il bisogno di esplicitare il tipo di variabile. Per assegnare un valore ad una variabile:
 \[
-  x=3 \cdot 2
+    x=3 \cdot 2
 \]
 In questo caso, la varibile $ x $, autodichiarata come \emph{double} (più a riguardo dopo), avrà conservato all'intero
 $ 6 $.
@@ -141,16 +141,16 @@ ones(n,1), ones(1,n);
 Questi creano un vettore di lunghezza e altezza n pieni di 0 (zeros) o 1 (ones).
 Deve essere presente minimo 1 colonna/riga.
 \begin{matlab}
-zeros(2,5)
-ones(5,2)
+    zeros(2,5)
+    ones(5,2)
 \end{matlab}
 Risulta in output:
 \begin{matlab}
-ans =
+    ans =
     0   0   0   0   0
     0   0   0   0   0
 
-ans =
+    ans =
     1   1
     1   1
     1   1
@@ -172,24 +172,24 @@ La funzione \verb|linspace()| può prendere 2 o 3 parametri:
     Creazione di un vettore tramite linspace di arg: \verb|1,2,4|.
 \end{example}
 \begin{matlab}
-linspace(1,2,4)
+    linspace(1,2,4)
 \end{matlab}
 \begin{matlabconsole}
-ans =
-1.0000  1.3333  1.6667  2.0000
+    ans =
+    1.0000  1.3333  1.6667  2.0000
 \end{matlabconsole}
 
 \bigskip
 Mentre il seguente:
 \begin{matlab}
-a=1;
-b=5;
-k=b;
-linspace(a,b,k)
+    a=1;
+    b=5;
+    k=b;
+    linspace(a,b,k)
 \end{matlab}
 \begin{matlabconsole}
-ans =
-1   2   3   4   5
+    ans =
+    1   2   3   4   5
 \end{matlabconsole}
 
 \bigskip
@@ -202,11 +202,11 @@ dove \verb|s| è il nostro \emph{``step''}.
     Creazione di un vettore riga con salti di 0.25.
 \end{example}
 \begin{matlab}
-0:0.25:1
+    0:0.25:1
 \end{matlab}
 \begin{matlabconsole}
-ans =
-0   0.2500  0.5000  0.7500  1.0000
+    ans =
+    0   0.2500  0.5000  0.7500  1.0000
 \end{matlabconsole}
 
 \subparagraph{Calculate a vector's p-norm}
@@ -217,24 +217,24 @@ norm(x,p)
 \begin{example}
 \end{example}
 \begin{matlab}
-% Create vector
-k=4;
-a = linspace (1,5,k);
-b = linspace (3,8,k);
-c = linspace (21,34,k);
-x =[a;b;c]
+    % Create vector
+    k=4;
+    a = linspace (1,5,k);
+    b = linspace (3,8,k);
+    c = linspace (21,34,k);
+    x =[a;b;c]
 
-% Calc p-norm
-norm(x,1)
+    % Calc p-norm
+    norm(x,1)
 \end{matlab}
 \begin{matlabconsole}
-x =
-1.0000  2.3333  3.6667  5.0000
-3.0000  4.6667  6.3333  8.0000
-21.0000 25.3333 29.6667 34.0000
+    x =
+    1.0000  2.3333  3.6667  5.0000
+    3.0000  4.6667  6.3333  8.0000
+    21.0000 25.3333 29.6667 34.0000
 
-ans =
-47
+    ans =
+    47
 \end{matlabconsole}
 
 \paragraph{Maximun \& minimun}
@@ -244,36 +244,36 @@ max(x), min(x), [n, i] = max(x)
 \end{verbatim}
 
 \begin{example}
-Calcolo del max e del min del vettore $ m $
+    Calcolo del max e del min del vettore $ m $
 \end{example}
 \begin{matlab}
-y=[1,3,5];
-x=[2,4,6];
-m=[y;x];
+    y=[1,3,5];
+    x=[2,4,6];
+    m=[y;x];
 
-m=max(m)
-n=min(m)
+    m=max(m)
+    n=min(m)
 \end{matlab}
 \begin{matlabconsole}
-m =
-     2     4     6
+    m =
+    2     4     6
 
 
-n =
-     2
+    n =
+    2
 \end{matlabconsole}
 
 Si può utilizzare la stessa funzione e ricevere in ritorno sia il valore max/min, che il suo indice nel vettore $ m $.
 Dato il seguente comando: \verb|x = linspace(1,50,25)|, sappiamo che il valore massimo sarà $ v=50 $, in posizione con indice $ i=25 $:
 \begin{matlab}
-x = linspace(1,50,25);
-[v,i]=max(x)
+    x = linspace(1,50,25);
+    [v,i]=max(x)
 \end{matlab}
 \begin{matlabconsole}
-v =
+    v =
     50
 
-i =
+    i =
     25
 \end{matlabconsole}
 
@@ -281,23 +281,23 @@ i =
 Dati due vettori (row vectors) $ x $ ed $ y $ di dimensione $ n $, possiamo computare la loro
 somma $ x+y $ ed il loro prodotto scalare $ x \cdot y' $.
 \begin{example}
-Calcolo della somma e del prodotto scalare dei vettori $ x $ e $ y $.
+    Calcolo della somma e del prodotto scalare dei vettori $ x $ e $ y $.
 \end{example}
 
 \begin{matlab}
-x=[1,5,8];
-y=[3,6,1];
+    x=[1,5,8];
+    y=[3,6,1];
 
-s=x+y
-p=x*y'
+    s=x+y
+    p=x*y'
 \end{matlab}
 \begin{matlabconsole}
-s =
+    s =
 
-     4    11     9
+    4    11     9
 
 
-p =
+    p =
 
     41
 \end{matlabconsole}
@@ -319,9 +319,9 @@ In Matlab, vi sono due tipi di operazioni fattibili tra matrici:
 Avendo due matrici $ a $ e $ b $, di grandezza uguale, si possono effettuare operazioni
 come moltiplicazione, frazione e potenza che rispettano le regole dell'algebra lineare.
 \begin{matlab}
-A = [1 2; 3 4];
-B = [5 6; 7 8];
-A*B          % prodotto tra matrici
+    A = [1 2; 3 4];
+    B = [5 6; 7 8];
+    A*B          % prodotto tra matrici
 \end{matlab}
 
 \subparagraph{Entry-wise operations}
@@ -331,9 +331,9 @@ elemento per elemento) posizionando un \verb|.| prima del simbolo dell'operatore
 a.*b, a./b, a.^b
 \end{verbatim}
 \begin{matlab}
-A = [1 2; 3 4];
-B = [5 6; 7 8];
-A.*B          % Moltiplicazione
+    A = [1 2; 3 4];
+    B = [5 6; 7 8];
+    A.*B          % Moltiplicazione
 \end{matlab}
 
 %
@@ -344,7 +344,7 @@ Adesso facciamo un piccolo appunto l'utilizzo base della Command Window di Matla
 \paragraph{clc} Tramite \verb|clc| si esegue il ``clear'', ovvero la pulizia, del terminale, eliminando tutti i comandi e le risposte che vi erano prima.
 
 \begin{note}
-Non verranno eliminate dalla memoria le variabili presenti nel Workspace!
+    Non verranno eliminate dalla memoria le variabili presenti nel Workspace!
 \end{note}
 
 \paragraph{clearvars} Tramite il comando \verb|clearvars| si puliscono le variabile immagazzinate in memoria.
@@ -358,11 +358,11 @@ Non verranno eliminate dalla memoria le variabili presenti nel Workspace!
 
 Ad esempio, utilizzando la funzione \verb|max(a)|, con $ a $ un vettore di lunghezza $ n $, la funzione mi ritornerà il valore massimo presente nel vettore. Se volessi sapere anche l'indice di quest'ultimo, posso utilizzare: \verb|[val, i] = max(a)|. Ovviamente non è possibile memorizzarsi tutti i modi in cui funzioni posso essere manipolate, ma utilizzando il comando \verb|help| posso leggere che:
 \begin{matlabconsole}
-max - Maximum elements of array
+    max - Maximum elements of array
     Syntax
-      M = max(A)
-      ...
-      [M,I] = max(___)
+    M = max(A)
+    ...
+        [M,I] = max(___)
 \end{matlabconsole}
 
 %
@@ -373,37 +373,37 @@ max - Maximum elements of array
 Tramite la Command Window si possono effettuare operazioni su variabili già presenti, o anche creandone di nuove, nel workspace.
 \begin{example}\end{example}
 \begin{matlab}
->> var1=10
+    >> var1=10
 
-var1 =
+    var1 =
     10
 \end{matlab}
 
 In questo caso ho dichiarato nel terminale una variabile \verb|var1=10|. Ora, nel workspace, avrò una variabile \verb|var1| di value $ 10 $, grandezza $ 1 \times 1 $ e classe \verb|double|.
 \begin{note}
-La variabile \verb|var1| ha grandezza $ 1 \times 1 $, questo perché ogni valore in Matlab viene trattato come una matrice e, in questo caso, un valore unico viene trattato come una matrice quadrata $ n \times n $ con $ n=1 $.
+    La variabile \verb|var1| ha grandezza $ 1 \times 1 $, questo perché ogni valore in Matlab viene trattato come una matrice e, in questo caso, un valore unico viene trattato come una matrice quadrata $ n \times n $ con $ n=1 $.
 \end{note}
 
 Posso inoltre effettuare operazioni sulla variabile già creata, ad esempio:
 \begin{example}\end{example}
 \begin{matlab}
->> var1 + 5
+    >> var1 + 5
 
-ans =
+    ans =
     15
 \end{matlab}
 
 In questo caso la variabile automatica \verb|ans| ha value $ 15 $, ovvero $ \text{var1}+5 $.
 
 \begin{example}
-Facendo invece:
-\begin{matlab}
->> var2 = var1+10
+    Facendo invece:
+    \begin{matlab}
+        >> var2 = var1+10
 
-var2 =
-    20
-\end{matlab}
-Andiamo a creare una nuova variabile, \verb|var2| che ha come value $ \text{var1}+10 $.
+        var2 =
+        20
+    \end{matlab}
+    Andiamo a creare una nuova variabile, \verb|var2| che ha come value $ \text{var1}+10 $.
 \end{example}
 Vediamo infine la figura \ref{fig:matlab-workspace} del workspace attuale.
 
@@ -418,8 +418,8 @@ Vediamo infine la figura \ref{fig:matlab-workspace} del workspace attuale.
 \subsection{Separation of statements}
 Se si volesse utilizzare una linea singola per fare più azioni, come per esempio dichiarare due variabili diverse, lo si può fare utilizzando la virgola (\verb|,|) per separare gli statement.
 \begin{note}
-Se voglio eseguire più istruzioni sulla stessa linea di comando, ma desidero sopprimere l'output nel terminale, inserisco un punto e virgola alla fine di ciascun comando.
-\begin{verbatim}
+    Se voglio eseguire più istruzioni sulla stessa linea di comando, ma desidero sopprimere l'output nel terminale, inserisco un punto e virgola alla fine di ciascun comando.
+    \begin{verbatim}
 var1 = 10; var2 = 50;
 \end{verbatim}
 \end{note}
@@ -434,10 +434,10 @@ A=[1 2 3; 4 5 6]
 \end{verbatim}
 Scritta in termini matematici:
 \[ A =
-  \begin{bmatrix}
-  1 & 2 & 3 \\
-  4 & 5 & 6
-  \end{bmatrix}
+    \begin{bmatrix}
+        1 & 2 & 3 \\
+        4 & 5 & 6
+    \end{bmatrix}
 \]
 
 \paragraph{Matrix size}
@@ -450,40 +450,40 @@ ones(n,m), zeros(n,m), eye(n)
 \end{verbatim}
 
 \begin{example}
-Stampa di matrici speciali (uno, zero e matrice identità).
+    Stampa di matrici speciali (uno, zero e matrice identità).
 \end{example}
 \begin{matlab}
-% Matrice di soli 1 (3x3)
-A = ones(3, 3);
-% Matrice di soli 0 (2x4)
-B = zeros(2, 4);
-% Matrice identita' (4x4)
-C = eye(4);
+    % Matrice di soli 1 (3x3)
+    A = ones(3, 3);
+    % Matrice di soli 0 (2x4)
+    B = zeros(2, 4);
+    % Matrice identita' (4x4)
+    C = eye(4);
 
-% Stampa risultati
-disp('A=ones(3,3):')
-disp(A)
-disp('B=zeros(2,4):')
-disp(B)
-disp('C=eye(4):')
-disp(C)
+    % Stampa risultati
+    disp('A=ones(3,3):')
+    disp(A)
+    disp('B=zeros(2,4):')
+    disp(B)
+    disp('C=eye(4):')
+    disp(C)
 \end{matlab}
 \begin{matlabconsole}
->> matrix
-A = ones(3,3):
-     1     1     1
-     1     1     1
-     1     1     1
+    >> matrix
+    A = ones(3,3):
+    1     1     1
+    1     1     1
+    1     1     1
 
-B = zeros(2,4):
-     0     0     0     0
-     0     0     0     0
+    B = zeros(2,4):
+    0     0     0     0
+    0     0     0     0
 
-C = eye(4):
-     1     0     0     0
-     0     1     0     0
-     0     0     1     0
-     0     0     0     1
+    C = eye(4):
+    1     0     0     0
+    0     1     0     0
+    0     0     1     0
+    0     0     0     1
 \end{matlabconsole}
 
 \subsection{Functions and matrix manipulation}
@@ -525,66 +525,66 @@ Avendo un vettore $ x $, la funzione \verb|diag(x)| ritorna una matrice diagonal
 \paragraph{Eigenvalues and eigenvectors} Prima di tutto, diamo una rinfrescata sulla definizione degli autovalori
 e delle matrici inverse:
 \begin{definition}[Autovalore e autovettore di una matrice quadrata]
-Sia $ A $ una matrice quadra $ n \times n $.
+    Sia $ A $ una matrice quadra $ n \times n $.
 
-Un numero $ \lambda \in \R $ e un vettore non nullo $ v \in \R^n $ soddisfano:
-\[
-  Av=\lambda v
-\]
+    Un numero $ \lambda \in \R $ e un vettore non nullo $ v \in \R^n $ soddisfano:
+    \[
+        Av=\lambda v
+    \]
 
-Allora:
-\begin{itemize}
-    \item $ \lambda $ è un autovalore (eigenvalue) di $ A $;
-    \item $ v $ è un autovettore (eigenvector) associato a $ \lambda $.
-\end{itemize}
+    Allora:
+    \begin{itemize}
+        \item $ \lambda $ è un autovalore (eigenvalue) di $ A $;
+        \item $ v $ è un autovettore (eigenvector) associato a $ \lambda $.
+    \end{itemize}
 \end{definition}
 Dal punto di vista geometrico:
 \begin{itemize}
     \item L'autovettore indica una direzione invariata dalla trasformazione.
     \item L'autovalore indica di quanto quella direzione viene scalata:
-        \begin{itemize}
-            \item se $ \lambda > 1 $: la direzione si allunga;
-            \item se $ 0 < \lambda < 1 $: si accorcia;
-            \item se $ \lambda < 0 $: si inverte.
-        \end{itemize}
+          \begin{itemize}
+              \item se $ \lambda > 1 $: la direzione si allunga;
+              \item se $ 0 < \lambda < 1 $: si accorcia;
+              \item se $ \lambda < 0 $: si inverte.
+          \end{itemize}
 \end{itemize}
 \begin{example}
-Data la matrice
-\[
-  A=
-  \begin{bmatrix}
-  2 & 0 \\
-  0 & 3
-  \end{bmatrix}
-\] calcolare l'autovalore e l'autovettore.
+    Data la matrice
+    \[
+        A=
+        \begin{bmatrix}
+            2 & 0 \\
+            0 & 3
+        \end{bmatrix}
+    \] calcolare l'autovalore e l'autovettore.
 \end{example}
 \begin{matlab}
-A = [2 0; 0 3];
-eig(A)
-inv(A)
+    A = [2 0; 0 3];
+    eig(A)
+    inv(A)
 \end{matlab}
 \begin{matlabconsole}
-ans =
-     2
-     3
+    ans =
+    2
+    3
 
-ans =
+    ans =
     0.5000         0
-         0    0.3333
+    0    0.3333
 \end{matlabconsole}
 
 \paragraph{linsolve(A,b)} Dato un sistema lineare $ Ax=b $, dove $ A $ è la matrice dei coefficienti, $ x $
 è il vettore incognito e $ b $ è il vettore dei termini noti.
 Il comando \verb|linsolve(A,b)| permette di risolvere il sistema lineare, quindi di trovare l'incognita $ x $.
 \begin{example}
-Dato il seguente sistema lineare:
-\[
-  \begin{cases}
-        2x_1 + x_2 = 5 \\
-        3x_1 + 4x_2 = 6
-    \end{cases}
-\]
-trovare il valore di $ x_{1} $ e $ x_{2} $.
+    Dato il seguente sistema lineare:
+    \[
+        \begin{cases}
+            2x_1 + x_2 = 5 \\
+            3x_1 + 4x_2 = 6
+        \end{cases}
+    \]
+    trovare il valore di $ x_{1} $ e $ x_{2} $.
 \end{example}
 Sistema lineare in forma matriciale:
 \[ A=
@@ -594,24 +594,24 @@ Sistema lineare in forma matriciale:
     \end{bmatrix},
     b=
     \begin{bmatrix}
-    5 \\ 6
+        5 \\ 6
     \end{bmatrix}
 \]
 \begin{matlab}
-A = [2 1; 3 4];   % matrice 2x2
-b = [5; 6];       % vettore colonna
+    A = [2 1; 3 4];   % matrice 2x2
+    b = [5; 6];       % vettore colonna
 
-x = linsolve(A, b)
+    x = linsolve(A, b)
 \end{matlab}
 \begin{matlabconsole}
->> matrix
+    >> matrix
 
-x =
+    x =
     2.8000
-   -0.6000
+    -0.6000
 \end{matlabconsole}
 Significa quindi che:
 \begin{align*}
-    x_{1}&=2.8 \\
-    x_{2}&=-0.6
+    x_{1} & =2.8  \\
+    x_{2} & =-0.6
 \end{align*}

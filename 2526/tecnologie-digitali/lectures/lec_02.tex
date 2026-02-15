@@ -1,3 +1,64 @@
-\lecture{The 3 M's}{28~-~10~-~2025}
+\lecture{Intro to Digital Twins}{10~-~01~-~2026}
 %
-ads
+%
+\section{Il contesto: industria 4.0}
+L'industria 4.0 non è definita da una sola tecnologia, ma da un insieme di ingredienti (Big data, IoT, Cloud Computing, Cybersecurity \dots)
+%
+\paragraph{Cambiamento di paradigma} Si passa da un sistema di controllo industriale centrale a uno in cui i prodotti intelligenti definiscono i passi di produzione.
+%
+\paragraph{Obiettivo} Creare modelli di dati e sistemi di controllo a circuito chiuso ("closed-loop").
+%
+\paragraph{Ruolo dell'IoT} Industrial IoT serve da ponte tra il mondo fisico e quello digitale..
+%
+\section{Definizione del Digital Twin}
+Il \gls{dt} è definito come l'interazione tra un Modello Virtuale e un Impianto Fisico lungo tutto il ciclo di vita dell'impianto.
+%
+\paragraph{Scopo} Fornire intelligenza e migliorare il processo produttivo.
+%
+\paragraph{Evoluzione} Un tempo era solo un'idea visionaria, ora è resa possibile dalla tecnologia attuale.
+
+%
+\section{Architettura del DT}
+Il funzionamento del si basa su un flusso continuo di dati tra due mondi:
+\begin{enumerate}
+    \item \emph{Physical World}
+          \begin{itemize}
+              \item \textbf{Sensori}, creano dati;
+              \item \textbf{Comunicazione}, i dati vengono trasmessi verso l'integrazione digitale;
+              \item \textbf{Attuatori}, ricevono comandi per agire sul sitema fisico.
+          \end{itemize}
+    \item \emph{Digital World}
+          \begin{itemize}
+              \item \textbf{Aggregazione}, i dati vengono raccolti;
+              \item \textbf{Analisi}, vengono analizzati tramite analytics;
+              \item \textbf{Insight}, l'analisi genera conoscenza utile per prendere decisione.
+          \end{itemize}
+\end{enumerate}
+
+%
+\subsection{Componentistica del DT}
+Il DT è costituito da quattro parti:
+\begin{enumerate}
+    \item Modello: riproduce le proprietà rilevanti dell'oggetto fisico per predire e ottimizzare (spesso usando Machine Learning).
+    \item Connessioni: abilitano l'interazione a circuito chiuso (Closed-loop) tra elementi fisici e digitali (tramite IoT, Cloud/Edge Computing).
+    \item Dati: l'intelligenza è realizzata attraverso l'unione di dati fisici e virtuali (Big Data, Data Mining, Data Fusion).
+    \item Servizio: incapsula le funzioni del DT in servizi facili da usare (Realtà Virtuale/Aumentata, Dashboard).
+\end{enumerate}
+%
+\subsection{Caratteristiche e costruzione}
+Non esiste una soluzione ``pronta all'uso'' (ready-to-wear) valida per ogni contesto.
+\subsubsection{Proprietà}
+%
+\paragraph{Sistema simbiotico} Esiste una relazione reciprocamente vantaggiosa tra l'entità fisica e la sua rappresentazione virtuale.
+%
+\paragraph{Adattabilità} È un ``sistema di sistemi'' che si auto-adatta, auto-regola e auto-monitora.
+%
+\paragraph{Personalizzazione} La fedeltà del modello, la velocità di sincronizzazione e le tecnologie scelte devono essere ritagliate (``tailored'') sullo specifico caso d'uso.
+
+\subsubsection{Requisiti per la costruzione}
+Per realizzare l'interazione a circuito chiuso è necessario:
+\begin{itemize}
+    \item Abilitare il rilevamento e il controllo in tempo reale (IoT, sensori wireless, RFID).
+    \item Identificare il modello virtuale adatto a riprodurre l'entità fisica al livello di dettaglio desiderato.
+    \item Abilitare la comunicazione in tempo reale tramite protocolli e interfacce standardizzate.
+\end{itemize}

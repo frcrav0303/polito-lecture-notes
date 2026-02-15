@@ -1,4 +1,94 @@
-\lecture{Industrial Buildings and Plant Services}{22~-~10~-~2025}
+\lecture{Ubicazione dell'Impianto}{23~-~01~-~2026}
 %
-\section{crazy}
-Roba entra in magazzino \gls{wip}
+\section{Scelta dell'ubicazione}
+La scelta dell'ubicazione non è un'attività isolata, ma uno step cruciale che segue lo studio di fattibilità (analisi di mercato, prodotto, processo e servizi) e precede la progettazione generale ed esecutiva dell'impianto. L'obiettivo è individuare una posizione che garantisca il minimo costo unitario totale del prodotto, includendo i costi di trasporto esterni.
+%
+\subsection{Fattori determinanti}
+Prima di applicare metodi matematici, bisogna analizzare i fattori qualitativi e quantitativi che influenzano la decisione:
+%
+\paragraph{Caratteristiche del mercato}
+\begin{itemize}
+    \item Se il mercato è \textbf{concentrato}, lo stabilimento va dislocato nelle sue vicinanze;
+    \item Se il mercato è \textbf{distribuito}, il criterio è più complesso (es. criterio baricentrico);
+    \item Attenzione al \emph{Lead Time}: se il mercato richiede tempi di risposta brevi (es. Zara), la vicinanza è fondamentale.
+\end{itemize}
+%
+\paragraph{Materie prime} La dislocazione dipende dalla perdita di peso/volume durante il processo:
+\begin{itemize}
+    \item \emph{Processi con perdita di peso} (es. raffinazione metalli): Ubicazione vicino alla fonte;
+    \item \emph{Processi senza perdita significativa}: Dislocazione indifferente.
+\end{itemize}
+%
+\paragraph{Manodopera} Valutate la disponibilità, il costo, il livello di specializzazione locale e la facilità di spostamento casa-lavoro;
+%
+\paragraph{Energie} Fattore critico solo se il processo è energivoro (es. necessità di acqua di raffreddamento per centrali termiche).
+%
+\paragraph{Costi di Costruzione} Variano in base al territorio (materiali, manodopera locale, terreno, tributi \dots) e al clima (che influenza le scelte costruttive).
+%
+\paragraph{Trasporti} Riguarda sia l'afflusso di materie prime che la distribuzione dei prodotti finiti.
+%
+\subsection{Scelta della localizzazione}
+Per prendere una decisione oggettiva, si utilizzano tre metodi principali:
+\begin{enumerate}[label=\alph*)] % chktex-file 9 chktex-file 10
+    \item Metodo del Punteggio (Fattori Qualitativi/Quantitativi)
+    \item Metodo in Base ai Costi (Fattori Economici)
+    \item Metodo dei Costi di Trasporto (Minimizzazione Distanze)
+\end{enumerate} % chktex-file 17
+%
+\paragraph{Metodo del Punteggio} Questo metodo è utile per integrare fattori eterogenei.
+\begin{enumerate}
+    \item Elencate i fattori rilevanti (es. manodopera, mercato, energia);
+    \item Assegnate un \textbf{peso} ($p$) a ciascun fattore in base alla sua importanza;
+    \item Assegnate una \textbf{valutazione} ($V$) numerica a ogni alternativa di ubicazione per quel fattore;
+    \item Calcolate il punteggio totale ($p \cdot V$) e scegliete l'ubicazione con il punteggio massimo;
+\end{enumerate}
+%
+\paragraph{Metodo in Base ai Costi} Si basa sul confronto puramente economico tra alternative (es. Località A vs Località B):
+\begin{itemize}
+    \item \emph{Procedimento}: Elencate e sommate i costi di investimento (terreno, fabbricati, raccordi) e i costi annui di esercizio (manodopera, trasporti, energia).
+    \item \emph{Criterio di scelta}: Se i costi di investimento e di esercizio sono contrastanti (es. una località ha investimenti alti ma costi di gestione bassi), dovete considerare i costi fissi attraverso le rate di ammortamento e confrontare i costi totali annui.
+\end{itemize}
+%
+\paragraph{Metodo dei Costi di Trasporto} Si applica per minimizzare i costi di trasporto esterni verso $n$ punti noti (clienti o fornitori).
+
+Per prima cosa calcoliamo il ``peso'' del trasporto $ w_{i} $ con:
+\[
+    w_{i}=v_{i} \cdot c_{i}
+\]
+dove:
+\begin{itemize}
+    \item $ v_{i} $ è il numero di viaggi/anno;
+    \item $ c_{i} $ è il costo per km;
+\end{itemize}
+
+Ora definiamo le seguenti variabili:
+\begin{itemize}
+    \item $X(x,y)$: Punto incognito (nuovo impianto).
+    \item $P_{i}(a_{i},b_{i})$: Punti noti di destinazione/origine.
+\end{itemize}
+Ora possiamo calcolare la funzione obiettivo: bisogna trovare $X^*$ che minimizza la somma dei prodotti tra pesi e distanze:
+\[
+    f(X) = \sum_{i=1}^{n}w_{i} \cdot d(X,P_{i}) = \min
+\]
+
+%
+\section{Dalla macro alla micro-ubicazione}
+Una volta individuata l'area geografica, bisogna scegliere il lotto specifico.
+Tra gli elementi da valutare troviamo:
+\begin{itemize}
+    \item Presenza di incentivi pubblici;
+    \item Vicinanza a vie di comunicazione (svincoli) e aziende complementari;
+    \item Caratteristiche fisiche: disponibilità d'acqua, esposizione ai venti, composizione del suolo.
+\end{itemize}
+%
+\paragraph{Dimensionamento del Terreno} Per il dimensionamento corretto, si utilizzano i seguenti rapporti empirici:
+\begin{itemize}
+    \item \textbf{Area totale}: Deve essere pari a 3 volte la superficie coperta inizialmente (per future espansioni e logistica);
+    \item \textbf{Forma}: Rapporto ottimale tra i lati 2:1;
+    \item \textbf{Metrica per operaio}:
+          \begin{itemize}
+              \item Piccola dimensione: dai $10\ m^2$ ai $20\ m^2$ per operaio;
+              \item Media dimensione (meccanica/auto): dai $150\ m^2$ ai $ 200\ m^{2} $ per operaio;
+              \item Grande dimensione (siderurgia): dai $ 400\ m^{2} $ ai $ 500\ m^{2} $ per operaio.
+          \end{itemize}
+\end{itemize}

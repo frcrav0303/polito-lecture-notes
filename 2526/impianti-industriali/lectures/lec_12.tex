@@ -1,0 +1,165 @@
+\lecture{Formulario}{26~-~01~-~2026}
+\section*{Formulario}
+
+\subsection*{Progettazione e Dimensionamento Plant Layout}
+\begin{itemize}
+    \item \textbf{Takt Time (Base):}
+          \[
+              TT = \frac{\text{Tempo Disponibile}}{\text{Domanda}} \quad \left[\frac{\text{tempo}}{\text{unità}}\right]
+          \]
+
+    \item \textbf{Frequenza di produzione:}
+          \[
+              f = \frac{1}{TT} \quad \left[\frac{\text{unità}}{\text{tempo}}\right]
+          \]
+
+    \item \textbf{Tempo di lavoro effettivo:}
+          \[
+              T_{eff} = T_{disp} \times \text{Rendimento}
+          \]
+
+    \item \textbf{Unità da produrre (con scarti):}
+          \[
+              u = \frac{\text{Numero di unità}}{(1-r_{0})(1-r_{1}) \dots (1-r_{n})} \quad \text{(dove } r_n = \text{tasso scarto)}
+          \]
+
+    \item \textbf{Pitch Time:}
+          \[
+              PT = TT \times Q_{contenitore}
+          \]
+
+    \item \textbf{Numero Macchine Teorico:}
+          \[
+              \#{\text{mac.}} =\frac{\text{Tempo Ciclo Macchina}}{\text{Takt Time}} \quad \text{(Arrotondare per eccesso)}
+          \]
+
+    \item \textbf{Funzione Obiettivo (Costo Trasporti):}
+          \[
+              C = \sum_{i} \sum_{j} T_{ij} \cdot c_{ij} \cdot d_{ij}
+          \]
+
+    \item \textbf{Rapporto di Hollier (Sequenziamento):}
+          \[
+              r = \frac{\text{From (Uscite)}}{\text{To (Entrate)}}
+          \]
+\end{itemize}
+
+\subsection*{Indici di Prestazione (KPI) di Magazzino}
+\begin{itemize}
+    \item \textbf{Selettività:}
+          \[
+              I_{s} = \frac{\text{Codici Dir. Accessibili}}{\text{Codici Totali}} \quad [\%]
+          \]
+
+    \item \textbf{Coefficiente di Utilizzazione Superficiale:}
+          \[
+              C_{s} = \frac{S_{\text{stoccaggio}}}{S_{totale}} \quad [\%]
+          \]
+
+    \item \textbf{Coefficiente di Utilizzazione Volumetrico:}
+          \[
+              C_{v} = \frac{V_{\text{stoccaggio}}}{V_{totale}} \quad [\%]
+          \]
+
+    \item \textbf{Giacenza Media:}
+          \[
+              G_{\text{media}} = \frac{\sum q_{i}t_{i}}{\sum t_{i}} \quad [\text{UdC} \text{ o } m^3]
+          \]
+
+    \item \textbf{Indice di Rotazione:}
+          \[
+              I_{R} = \frac{U_{\text{transito}}}{G_{\text{media}}}
+          \]
+
+    \item \textbf{Indice di Durata:}
+          \[
+              I_{D} = \frac{1}{I_{R}} \quad [\text{Periodo T}]
+          \]
+
+    \item \textbf{Giorni di Copertura:}
+          \[
+              GC = \frac{GG_{\text{lavorativi}}}{I_{R}} \quad [\text{Giorni}]
+          \]
+
+    \item \textbf{Indice di Honeycombing:}
+          \[
+              I_{H} = \frac{\text{Ubicazioni Vuote}}{\text{Ubicazioni Totali}} \quad [\%]
+          \]
+\end{itemize}
+
+\subsection*{Dimensionamento Sistema di Movimentazione (Carrelli)}
+\begin{itemize}
+    \item \textbf{Tempo Ciclo Totale:}
+          \[
+              T_{ciclo} = T_{fisso} + T_{variabile}
+          \]
+
+    \item \textbf{Percorso totale medio ($r$):}
+          \[
+              r = n \cdot (2w+a)+ 2 \cdot (2A+m \cdot l)
+          \]
+
+    \item \textbf{Durata del ciclo ($d$):}
+          \[
+              d = \frac{r}{v_{t}} + \frac{2 \cdot h \cdot (j-1)}{v_{s}} + t_{f}
+          \]
+
+    \item \textbf{Numero di carrelli necessari ($z$):}
+          \[
+              z = \frac{d \cdot f}{g \cdot y \cdot \eta}
+          \]
+\end{itemize}
+
+\subsection*{Sistemi di Stoccaggio e Picking (AS/RS)}
+\begin{itemize}
+    \item \textbf{Tempi di percorrenza (Orizzontale/Verticale):}
+          \[
+              T_l = \frac{L}{v_l}, \quad T_h = \frac{H}{v_h}
+          \]
+
+    \item \textbf{Fattore di forma ideale:}
+          \[
+              h_l = \frac{T_h}{T_l} = 1
+          \]
+
+    \item \textbf{Punti Caratteristici (FEM 9851):}
+          \[
+              P_1 = \left(\frac{1}{5}L, \frac{2}{3}H\right), \quad P_2 = \left(\frac{2}{3}L, \frac{1}{5}H\right)
+          \]
+
+    \item \textbf{Tempo Medio Ciclo Semplice (CS):}
+          \[
+              T_m(CS) = t(P_1) + t(P_2) + 2t_{fissi}
+          \]
+          \emph{Nota: $t(P) = \max(t_x, t_y)$ (movimenti simultanei)}
+
+    \item \textbf{Tempo Medio Ciclo Combinato (CC):}
+          \[
+              T_m(CC) = T_m(CS) + t(P_1 \to P_2) + 2t_{fissi}
+          \]
+
+    \item \textbf{Numero Trasloelevatori:}
+          \[
+              N = \frac{PM}{\text{Cicli}_{eff}} \quad (\text{dove } PM = \text{Potenzialità richiesta})
+          \]
+
+    \item \textbf{Indice di Accesso (Picking):}
+          \[
+              I_A = \frac{\text{Popularity}}{\text{Volume}} \quad \left[\frac{\text{accessi}}{m^3}\right]
+          \]
+\end{itemize}
+
+%
+\subsection*{Illuminazione}
+\begin{itemize}
+    \item \textbf{Metodo del flusso totale:}
+          \[
+              F_{t} = \frac{E \cdot A}{u \cdot m} \quad [\si{lumen}]
+          \]
+          Dove: $ F_{t} $ è flusso totale delle lampade installate, $ E $ è illuminamento medio previsto ($ \si{lux} $), $ A $ area del locale ($ \si{m^2} $), $ u $ coefficiente di illuminazione ($ < 1 $), $ m $ fattore di manutenzione ($ < 1 $).
+    \item \textbf{Numeri di apparecchi di illuminazione previsti:}
+          \[
+              N = \frac{F_{t}}{F_{L}} = \frac{E \cdot A}{u \cdot m \cdot F_{L}}
+          \]
+          Dove: $ N $ è il numero totale di apparecchi di illuminazione previsti, $ F_{t} $ il flusso totale delle lampadine installate ($ \si{lumen} $) e $ F_{L} $ il flusso iniziale emesso da un apparecchio di illuminazione ($ \si{lumen} $).
+\end{itemize}

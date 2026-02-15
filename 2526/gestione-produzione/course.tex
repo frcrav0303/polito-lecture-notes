@@ -1,0 +1,25 @@
+%
+\newacronym{mat}{Matlab}{Matrix Laboratory}
+\newacronym{ide}{IDE}{Integrated Development Environment}
+
+\newtcolorbox[auto counter]{stepbox}[1][]{
+    % Stile estetico
+    enhanced,
+    colback=white,
+    colframe=gray!80!black,
+    coltitle=white,
+    %
+    % Titolo: Passo X. Se c'è testo opzionale (#1), aggiunge ": Testo"
+    title={\textbf{Passo \thetcbcounter} \ifstrempty{#1}{}{:~#1}},
+    %
+    % Impostazioni geometriche
+    sharp corners,
+    boxrule=0.5pt,
+    %
+    % Spaziatura
+    bottom=2mm, top=2mm,
+    before skip=0.2cm,
+    after skip=0.2cm
+    %
+    % NOTA: Ho rimosso le righe vuote e spostato #1 dentro 'title'
+}

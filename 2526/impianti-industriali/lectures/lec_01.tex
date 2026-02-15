@@ -1,8 +1,89 @@
-\lecture{Industry}{15~-~10~-~2025}
+\lecture{Fondamenti di Impianti Industriali}{23~-~01~-~2026}
 %
-\section{Types of industries}
-Partiamo con le basi.
+\section{Definizione e compentenze}
+Per affrontare correttamente la materia, è necessario sviluppare una visione d'insieme che vada oltre la semplice definizione. L'obiettivo è acquisire la capacità di progettare, gestire e ottimizzare un sito industriale. Nello specifico, bisogna essere in grado di:
+\begin{itemize}
+    \item Comprendere e rappresentare il processo tecnologico e l'impianto nel suo insieme.
+    \item Dimensionare non solo gli impianti di processo, ma anche quelli tecnologici e di servizio ausiliari, fondamentali per il funzionamento dello stabilimento.
+    \item Costruire il flusso di processo, integrando logistica interna ed esterna, produzione e stoccaggio.
+    \item Elaborare uno Studio di Fattibilità e stimare il Budget economico necessario alla realizzazione.
+    \item Gestire i rischi per la salute e la sicurezza dei lavoratori.
+    \item Utilizzare tecniche moderne come la virtualizzazione tramite Digital Twin per simulare l'impianto.
+\end{itemize}
+%
+\subsection{Manufacturing e sistema di produzione}
+Il settore Manifatturiero (\emph{Manufacturing}) è il cuore dell'attività industriale. Esso rappresenta l'attività umana volta a trasformare le materie prime in:
+\begin{enumerate}
+    \item Prodotti finiti: destinati al consumatore finale.
+    \item Semilavorati: destinati a ulteriori lavorazioni manifatturiere.
+\end{enumerate}
+Il Sistema di Produzione funziona secondo un modello di input-output ben definito:
+\begin{itemize}
+    \item \emphr{Input}: Materia prima/semilavorati, Energia, Personale, Fattori di produzione.
+    \item \emphr{Processo}: Una ``scatola nera'' centrale dove avviene la trasformazione.
+    \item \emphr{Output}: Prodotti finiti/semilavorati.
+\end{itemize}
+La fase cruciale di trasformazione (sia essa fisica o chimica) che permette di ottenere nuovi beni in uscita è definita \emph{Processo Tecnologico}.
+%
+\subsection{Impianto Industriale}
+L'impianto industriale è un complesso sistema tecnologico che include macchinari, attrezzature e processi organizzati per la produzione su larga scala. Esso si inserisce sempre all'interno di un'impresa con obiettivi economici.
+In ambito tecnico e normativo, l'impianto può essere indicato con vari sinonimi: Unità produttiva, Stabilimento, Fabbrica, Officina, Opificio, Laboratorio, Plant \dots
+%
+\paragraph{Composizione strutturale dello stabilimento produttivo} Uno stabilimento non è un monolite, ma si divide in due macro-categorie che operano in sinergia:
+\begin{enumerate}
+    \item Impianto Tecnologico o Produttivo: Dove avviene la trasformazione diretta.
+    \item Impianti Ausiliari o di Servizio: Necessari al supporto e al funzionamento del reparto produttivo.
+\end{enumerate}
+%
+\paragraph{Criteri di Sviluppo} La realizzazione di un impianto deve seguire criteri etici ed economici precisi:
+\begin{itemize}
+    \item Convenienza per la collettività e per l'azienda.
+    \item Rispetto dell'ambiente e annullamento dell'inquinamento.
+    \item Salvaguardia della salute e sicurezza dei lavoratori.
+    \item Risparmio energetico e uso razionale delle risorse.
+\end{itemize}
+%
+\section{Supply Chain}
+L'impianto industriale non è un'isola, ma il punto centrale della Supply Chain (catena di approvvigionamento). La Supply Chain è il processo end-to-end che va dalle materie prime alla consegna al consumatore.
+%
+\paragraph{Integrazione strategica} L'impianto funge da collegamento cruciale tra fornitori e distributori. Per il successo della catena, è necessaria una collaborazione sinergica su diversi fronti:
+\begin{itemize}
+    \item Con i Fornitori: Scambio tempestivo di informazioni per evitare ritardi nell'arrivo delle materie prime.
+    \item Gestione dell'Inventario: Coordinamento degli stock per evitare sovrapproduzione o carenze (out-of-stock), utilizzando sistemi di tracciabilità.
+    \item Adattabilità: Capacità di regolare la produzione basandosi su previsioni e analisi dei dati per rispondere alle fluttuazioni della domanda di mercato.
+    \item Comunicazione: Scambio regolare di dati con tutti i partner chiave.
+\end{itemize}
+%
+\section{Classificazione degli Impianti Industriali}
+Gli impianti industriali vengono classificati secondo due criteri principali: la natura del processo produttivo e le dimensioni economiche.
 
-Esistono vari tipi di industrie, in questo corso quella che ci interessa di più sarà quella \emph{manifatturiera}.
+%
+\paragraph{Classificazione per Natura del Processo}
+\begin{itemize}
+    \item Manifatturiero: Trasformazione in prodotti finiti (es. auto, tessile).
+    \item Estrattivo: Miniere e cave.
+    \item Energetico: Produzione di energia (termica, solare, eolica, ecc.).
+    \item Chimico e Petrolchimico: Processi chimici complessi e raffinazione di combustibili.
+    \item Alimentare: Trattamento e confezionamento cibi.
+    \item Farmaceutico: Produzione di medicinali.
+    \item Trattamento delle acque: Depurazione reflui.
+    \item Altri settori: Edile, Elettronico, Automobilistico, Tessile \dots
+\end{itemize}
 
-Un'industria manifatturiera è un'industria che si concentra nella produzione di beni: vi sono impianti che trasformano materie prime in prodotti finiti. Ad esempio, impianti automobilistici, alimentari, tessili, etc.
+%
+\paragraph{Classificazione dimensionale (per criteri EU)}
+La classificazione delle imprese si basa sul numero di dipendenti e sul fatturato annuo (o totale di bilancio), criteri stabiliti dall'UE. Vedi tabella \ref{tab:class_imp} a riguardo.
+\begin{table}
+    \centering
+    \begin{tabular}{lrr}%
+        \toprule
+        \textbf{Tipologia} & \textbf{Dipententi} & \textbf{Fatturato o totale bilancio} \\
+        \midrule
+        Microimpresa       & $ <10 $ \%          & $ \leq 2 $ Milioni di Euro           \\
+        Piccola Impresa    & $ <50 $ \%          & $ \leq 10 $ Milioni di Euro          \\
+        Grande Impresa     & $ >250 $ \%         & $ \leq 50 $ Milioni di Euro          \\
+        Media Impresa      & $ <250 $ \%         & $ >50 $ Milioni di Euro              \\
+        \bottomrule
+    \end{tabular}
+    \caption{Classificazione delle Imprese in UE.}\label{tab:class_imp}
+\end{table}

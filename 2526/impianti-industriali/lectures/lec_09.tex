@@ -1,0 +1,109 @@
+\lecture{Sistemi di Trasporto Interni Automatici}{26~-~01~-~2026}
+%
+%
+\section{Fabbrica Automatica e Sistemi Flessibili}
+L'obiettivo della fabbrica automatica è l'integrazione del flusso dei materiali e delle informazioni per ottimizzare il processo produttivo tramite l'automazione industriale. La massima espressione di questo concetto è il Flexible Manufacturing System (FMS). Un sistema FMS è composto da:
+\begin{itemize}
+    \item Celle di fabbricazione: Ogni cella include un robot che serve diverse macchine utensili CNC o sistemi di saldatura;
+    \item Sistema centrale di trasferimento: Collega le celle tramite nastri, catene o veicoli automatici (AGV);
+    \item Calcolatore centrale: Coordina tutte le attività del sistema.
+\end{itemize}
+
+%
+\section{Automated Guided Vehicles (AGV)}
+Gli AGV sono veicoli per il trasporto interno senza guidatore a bordo. Un sistema AGV si compone di quattro elementi fondamentali:
+\begin{enumerate}
+    \item I carrelli: Alimentati a batterie, eseguono il trasporto fisico;
+    \item Sistema di guida: Guida i carrelli lungo i percorsi stabiliti;
+    \item Impianto per comunicazioni: Trasmette comandi e informazioni tra sistema di gestione e carrelli;
+    \item Calcolatore di gestione: Controlla l'intero impianto.
+\end{enumerate}
+
+%
+\subsection{Tecnologie di Guida}
+Esistono diverse tecnologie per guidare questi veicoli:
+\begin{itemize}
+    \item \textbf{Guida Induttiva (Fissa)}: Un cavo interrato nel pavimento genera un campo magnetico rilevato da bobine sul carrello. Può essere monofrequenza (un solo cavo per tutti i percorsi) o multifrequenza (fili diversi con frequenze diverse per ogni percorso).
+    \item \textbf{Guida Ottica (Fissa)}: Utilizza nastri catarifrangenti o strisce colorate a terra. I sensori possono essere a luce riflessa o telecamere a bordo.
+    \item \textbf{Guida Laser (LGV)}: Navigazione odometrica con scansione laser. Una testa rotante sul veicolo invia raggi laser verso riflettori installati nell'ambiente. Il computer calcola la posizione triangolando almeno 3 o 4 punti di riflessione.
+    \item \textbf{Guida Libera Visuale}: Telecamere stereo a 360° costruiscono una mappa 3D dinamica dell'ambiente (tecnologia Evidence Grid), eliminando la necessità di infrastrutture fisse.
+    \item \textbf{Navigazione Stimata (Dead Reckoning)}: Software che calcola la posizione basandosi sui sensori di spostamento degli assi (encoder). Adatto solo per tragitti brevi poiché perde precisione sulla lunga distanza.
+\end{itemize}
+
+%
+\subsection{Tipologie di carrelli}
+Sono presenti diverse tipologie di carrelli:
+\begin{itemize}
+    \item \textbf{Carrelli trainanti (trattori)}: Trainano una serie di rimorchi, ideali per traffico elevato;
+    \item \textbf{Carrelli trasportatori}: Dotati di piattaforme, rulli motorizzati o forche per il carico automatico;
+    \item \textbf{Muletti a guida automatica}: Simili ai carrelli elevatori tradizionali ma senza operatore (es. LGV a forche);
+    \item \textbf{Assembly Platforms}: L'AGV funge da postazione di lavoro mobile integrata nella linea di assemblaggio.
+\end{itemize}
+
+%
+\subsection{Sicurezza e Progettazione}
+La sicurezza è garantita da normative (UNI EN 1525) e dispositivi come laser scanner a 360 gradi, paraurti sensibili, pulsanti di emergenza e sensori che distinguono ostacoli fissi da quelli dinamici. La progettazione richiede l'analisi dei flussi, il calcolo del numero di veicoli (metodo deterministico), la definizione del layout e delle aree di ricarica.
+
+%
+\paragraph{Vantaggi} Flessibilità, riduzione scorte e danni, sicurezza, integrazione con altri sistemi.
+%
+\paragraph{Svantaggi} Alti costi d'investimento, sensibilità ambientale (pavimenti, clima) e inoltre necessità di manutenzione specializzata.
+
+%
+\section{Robot Industriali}
+Il robot è un manipolatore multifunzionale riprogrammabile progettato per muovere materiali o attrezzi attraverso movimenti programmati. Componenti principali:
+\begin{itemize}
+    \item Manipolatore: La struttura meccanica composta da bracci (link) e giunti;
+    \item Attuatori: Motori (elettrici, idraulici, pneumatici) che generano il movimento;
+    \item End Effector: L'organo terminale (pinza, saldatrice) collegato alla flangia finale;
+    \item Controllo: Il cervello elettronico che gestisce traiettorie, I/O e interazione.
+\end{itemize}
+
+%
+\paragraph{Gradi di libertà} Rappresentano i movimenti consentiti. Per posizionare e orientare un oggetto in qualsiasi punto dello spazio 3D sono necessari 6 gradi di libertà (3 per la posizione, 3 per l'orientamento).
+
+%
+\paragraph{Sensori} I sensori si suddividono in:
+\begin{itemize}
+    \item \emph{Sensori per contatto}: Tattili, di forza/coppia.
+    \item \emph{Sensori senza contatto}: Visivi, di prossimità, laser.
+\end{itemize}
+
+%
+\paragraph{Applicazioni} Saldatura (punti/arco), verniciatura, assemblaggio, carico/scarico macchine, pallettizzazione.
+
+%
+\section{Industria 4.0 e Lean}
+L'Industria 4.0 rappresenta la quarta rivoluzione industriale, basata sui Sistemi Cyber-Fisici dove oggetti reali e processi virtuali sono interconnessi. Il concetto chiave è la connessione di persone, macchine e sistemi per creare una Fabbrica Intelligente, capace di adattarsi autonomamente. Le tecnologie abilitanti includono:
+\begin{itemize}
+    \item Internet of Things (IoT);
+    \item Big Data e Analytics;
+    \item Cloud Manufacturing;
+    \item Additive Manufacturing.
+\end{itemize}
+Il \emph{Lean Management} è propedeutico a Industria 4.0: l'approccio snello e il coinvolgimento dei dipendenti creano le condizioni per il successo dell'automazione.
+
+%
+\section{Robot Collaborativi}
+A differenza dei robot tradizionali (che lavorano in gabbie), i CoBot sono progettati per interagire fisicamente con l'uomo nello stesso spazio di lavoro, senza barriere.
+%
+\paragraph{Caratteristiche distintive}
+\begin{itemize}
+    \item Più lenti e meno potenti dei robot industriali per garantire la sicurezza;
+    \item Facili da programmare (apprendimento guidato dall'operatore) e riposizionare;
+    \item Non sostituiscono l'uomo, ma lo sollevano da compiti ripetitivi, faticosi o a basso valore aggiunto.
+\end{itemize}
+
+%
+\paragraph{Integrazione Mobile (AMR)} Un CoBot montato su un AGV diventa un Autonomous Mobile Robot. Questo sistema può navigare autonomamente tra gli scaffali, eseguire picking o sanificazione degli ambienti, lavorando giorno e notte.
+
+%
+\section{Logistica 4.0}
+Applicazione dei paradigmi di Industria 4.0 alla Supply Chain. Si basa su tre parole chiave: automazione, interconnessione e integrazione. Le tecnologie principali applicate alla logistica sono:
+\begin{itemize}
+    \item Sensori IoT: Per tracking in tempo reale e monitoraggio condizioni (es. temperatura cibi);
+    \item Cloud: Per la condivisione sicura dei dati tra gli attori della filiera;
+    \item Analytics: Per estrarre valore dai dati e ottimizzare i flussi;
+    \item Realtà Aumentata: Supporto al picking per ridurre errori;
+    \item Additive Manufacturing: Utile per la gestione dei ricambi on-demand (postponement logistico).
+\end{itemize}

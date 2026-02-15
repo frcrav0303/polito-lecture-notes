@@ -1,0 +1,109 @@
+\lecture{IIoT, Cloud, Edge}{11~-~01~-~2026}
+%
+%
+\section{Infrastrutture Digitali}
+Il concetto di Digital Twin (Gemello Digitale) è centrale per l'Industria 4.0 e si basa su quattro pilastri fondamentali:
+\begin{enumerate}
+    \item Modello: Riproduce le proprietà rilevanti del gemello fisico per predire e ottimizzare;
+    \item Connessioni: Abilitano l'interazione a circuito chiuso (closed-loop) tra fisico e digitale;
+    \item Dati: L'intelligenza è realizzata attraverso l'uso di dati fisici e virtuali;
+    \item Servizi: Le funzioni del Digital Twin sono incapsulate in servizi di facile utilizzo.
+\end{enumerate}
+
+Il processo è ciclico e prevede un lato \emph{fisico} (creare, comunicare, agire) e un lato \emph{digitale} (aggregare, analizzare, intuire/insight).
+
+%
+\section{Componentistica hardware per la comunicazione}
+%
+\subsection{Sensori}
+I sensori sono l'\emphtb{input}, misurano i cambiamenti ambientali o fenomeni fisici e generano segnali elettrici. Possono monitorare temperatura, umidità, pressione, movimento, ecc \dots
+%
+\paragraph{Sensori analogici} I sensori analogici sono continui e hanno precisione infinita ma sono soggetti a errori;
+%
+\paragraph{Sensori digitali} I sensori digitali usano campionamento e quantizzazione, offrendo una rappresentazione robusta e flessibile, ma sono meno precisi.
+
+Un nodo sensore tipico include processore, alimentazione e unità radio per trasmettere i dati.
+%
+\subsection{Attuatori}
+Gli attuatori sono invece l'\emphtb{output} del sistema: traducono un segnale digitale in un fenomeno fisico (movimento, controllo), influenzando il comportamento della macchina. Alcuni esempi di attuatori sono motori, valvole smart, speaker \dots
+
+%
+\section{Industrial Internet of Things}
+L'\gls{iiot} è la rete di oggetti fisici (things) che raccolgono e scambiano dati senza intervento umano. L'obiettivo è quello di trasformare i dati in insight sull'efficienza delle operazioni manifatturiere.
+%
+\paragraph{Impatto economico} Si stima che l'IIoT riesca a generare tra $ 1.2 $ e $ 3.7 $ trilioni di dollari annui entro il 2025.
+%
+\subsection{Livelli di integrazione}
+Troviamo 3 livelli di integrazione dell'\gls{iiot}:
+\begin{enumerate}
+    \item \emph{Unit Level}: Equipaggiamento e linea di produzione (feedback di base);
+    \item \emph{System Level}: Interconnessione di componenti e collaborazione;
+    \item \emph{System-of-Systems Level}: Integrazione a livello aziendale, intero ciclo di vita del prodotto e supply chain.
+\end{enumerate}
+
+%
+\section{Architetture di calcolo}
+Le architetture di calcolo sono:
+\begin{itemize}
+    \item Cloud;
+    \item Edge;
+    \item Fog.
+\end{itemize}
+%
+\subsection{Cloud computing}
+Infrastruttura centralizzata dove l'elaborazione e lo storage avvengono su server remoti accessibili via internet.
+I modelli di servizio sono:
+\begin{itemize}
+    \item IaaS (Infrastructure as a service): Fornisce hardware virtuale (server, storage);
+    \item PaaS (Platform as a service): Fornisce piattaforme di sviluppo;
+    \item SaaS (Software as a service): Accesso al software (es. Google Docs, Office 365).
+\end{itemize}
+Tipi di cloud:
+\begin{itemize}
+    \item Public: Le risorse sono condivise, ha una sicurezza minore.
+    \item Private: Infrastruttura dedicata, fornisce migliore sicurezza ma ha costi elevati;
+    \item Hybrid: Combinazione dei due.
+\end{itemize}
+%
+\paragraph{Pro del cloud computing} Ottima scalabilità e potenza di calcolo.
+%
+\paragraph{Contro del cloud computing} Problemi di latenza, dipendenza dalla connessione di rete, sicurezza.
+
+%
+\subsection{Edge computing}
+Elaborazione dei dati alla periferia della rete, il più vicino possibile alla sorgente (macchinari).
+%
+\paragraph{Pro dell'edge computing} Bassa latenza, maggiore sicurezza (i dati restano locali), riduzione del trasferimento dati.
+
+%
+\subsection{Fog computing}
+Un livello intermedio tra Edge e Cloud. Decentralizzato ma distribuito.
+Permette bassa latenza e interazione in tempo reale (location-aware) pur mantenendo capacità di storage temporaneo.
+
+\subsection{Confronto delle architetture}
+Il confronto della piramida Edge-Fog-Cloud:
+\begin{itemize}
+    \item Cloud: Più storage, più potenza di calcolo, ma più lento (alta latenza);
+    \item Edge/Fog: Meno storage, meno potenza, ma molto più veloce (bassa latenza) e maggiore interazione locale.
+\end{itemize}
+
+%
+\section{Protocolli di comunicazione}
+I protocolli di comunicazione sono classificati in tre categorie:
+\begin{enumerate}
+    \item IT (Information Technology): Gestione flussi informativi;
+    \item IoT (Internet of Things): Connessione oggetti;
+    \item OT (Operational Technology): Controllo processi fisici.
+\end{enumerate}
+
+%
+\paragraph{Information Technology} Il protocollo principale è l'\emph{HTTP}. Fondamenta del web, architettura client-server, scalabile.
+%
+\paragraph{Internet of Things} I protocolli principali per l'IoT sono:
+\begin{itemize}
+    \item \emph{Bluetooth}: Corto raggio, basso costo, basato su pairing;
+    \item \emph{Zigbee}: Wireless a corto raggio, basso consumo (batteria), rete mesh.
+    \item \emph{MQTT}: Protocollo ``Publish/Subscribe'' leggero, ideale per banda limitata e ambienti instabili. Risulta molto più efficiente del Modbus (vedi sotto) in termini di overhead.
+\end{itemize}
+%
+\paragraph{Operational Technology} Il protocollo principale dell'OT è il Modbus, standard aperto master-slave per PLC e sensori. Non ha sicurezza nativa contro cyber-attacchi.

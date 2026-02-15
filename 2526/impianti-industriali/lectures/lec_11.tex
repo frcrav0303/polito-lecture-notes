@@ -1,0 +1,109 @@
+\lecture{Picking e Packaging}{26~-~01~-~2026}
+%
+%
+\section{Ruolo strategico del Picking}
+Il picking rappresenta un'attività critica nella gestione dei magazzini industriali. Si definisce come un'operazione di ``rottura'' delle Unità di Carico (UdC) originali per prelevare parzialmente materiali e ricostituire nuovi raggruppamenti destinati a soddisfare ordini di lavorazione (interni) o di spedizione (esterni verso clienti).
+\begin{itemize}
+    \item \textbf{Impatto operativo}: Scomponendo le attività di magazzino, il picking assorbe circa il 50\% del tempo totale di lavoro.
+    \item \textbf{Refilling}: È l'operazione inversa, ovvero la ricomposizione o rifornimento di una UdC soggetta a picking.
+    \item \textbf{Condizioni di eseguibilità}: Per essere ``prelevabili'', i materiali devono essere rigidi, facilmente conteggiabili e singolarmente individuabili (o rintracciabili).
+\end{itemize}
+%
+\section{Logiche di esecuzione e Sorting}
+La gestione del prelievo può seguire due logiche principali, la cui scelta impatta sull'efficienza e sull'organizzazione del lavoro:
+\begin{itemize}
+    \item \textbf{Order Picking}: Si evade un ordine completo (o una frazione) alla volta. I materiali vengono prelevati e inviati direttamente alla confezione finale.
+    \item \textbf{Batch Picking}: Si preleva un lotto (batch) di ordini contemporaneamente. Questa tecnica richiede una fase successiva di Sorting (smistamento) per separare gli articoli destinati ai diversi ordini.
+          \begin{itemize}
+              \item \emph{Vantaggio del Batch Picking}: Ottimizza il percorso di prelievo e riduce il numero di addetti necessari, favorendo anche il distanziamento sociale (minore contatto tra operatori).
+          \end{itemize}
+\end{itemize}
+
+%
+\subsection{Il processo di Sorting}
+Lo smistamento (sorting) suddivide gli articoli prelevati in base alla destinazione. Può avvenire in due modalità:
+\begin{enumerate}
+    \item \textbf{Contestuale al prelievo}: L'operatore smista la merce direttamente mentre la preleva (es. carrelli con scomparti dedicati a clienti diversi);
+    \item \textbf{Differito}: Avviene dopo il prelievo massivo. Può essere manuale o automatizzato (tramite nastri trasportatori, sorter a vassoi, ecc.).
+\end{enumerate}
+
+%
+\section{Tecniche Operative}
+Le configurazioni progettuali si dividono in due macro-categorie.
+%
+\subsection{Operatore verso Materiale (Man-to-Goods)}
+Il picker si sposta fisicamente verso le locazioni di stoccaggio.
+%
+\paragraph{Sistemi} Scaffalature a gravità, carrelli manuali, carrelli commissionatori verticali.
+%
+\paragraph{Criticità} Il tempo di viaggio (spostamento) può superare il 50\% del tempo totale di lavoro. Il prelievo a terra è più produttivo rispetto a quello in verticale, ma richiede maggiore superficie orizzontale.
+
+%
+\subsection{Materiale verso Operatore (Goods-to-Man)}
+L'operatore rimane in una postazione fissa e i materiali gli vengono portati da sistemi automatizzati.
+%
+\paragraph{Sistemi per UdC grandi} Magazzini serviti da trasloelevatori o carrelli a forche automatici.
+%
+\paragraph{Sistemi per UdC piccole} Sono composti da caroselli verticali o orizzontali, miniload (magazzini automatici per cassette) e scaffali mobili (Robot a guida autonoma che spostano interi scaffali verso l'operatore (es. tecnologia Amazon Kiva)).
+
+%
+\paragraph{Pick-to-Box} Una variante efficace per il distanziamento sociale, dove la merce viene posizionata direttamente nel collo finale, limitando l'area di movimento dell'operatore.
+
+%
+\section{Tecnologie a Supporto del Picking}
+L'adozione tecnologica mira a ridurre errori e aumentare la produttività:
+\begin{itemize}
+    \item \emph{Barcode e Lettori}: Standard base per l'identificazione (EAN, QR Code, GS1 DataBar);
+    \item \emph{Pick to Light / Put to Light}:
+          \begin{itemize}
+              \item Display luminosi sugli scaffali indicano cosa prelevare e in che quantità;
+              \item Nel Put to Light, il sistema indica dove depositare l'articolo smistato;
+              \item \textbf{Vantaggi}: Elimina la carta, riduce gli errori, efficienza +50\%, ROI rapido (6-8 mesi).
+          \end{itemize}
+    \item \emph{Voice Picking}: L'operatore riceve istruzioni vocali in cuffia e conferma vocalmente. Lascia mani e occhi liberi (hands-free, eyes-free). L'integrazione tra Voice e Pick to Light ha dimostrato aumenti di produttività significativi (+18\% righe prelevate);
+    \item \emph{RFID}: Tag a radiofrequenza per lettura senza contatto visivo diretto;
+    \item \emph{Realtà Aumentata (Smart Glasses/Head-up)}: Occhiali che sovrappongono indicazioni grafiche alla visione reale (percorso, posizione collo), lasciando l'operatore libero nei movimenti;
+    \item \emph{Bin Handling System}: Sistemi a tasche su guidovie aeree, ideali per l'e-commerce e la gestione dei resi (accumulo, buffering e sorting dinamico);
+\end{itemize}
+
+%
+\section{Criteri di Allocazione}
+Per ottimizzare il picking, la merce non va posizionata solo in base alla rotazione, ma in base all'Indice di Accesso nell'area di fast-pick.
+%
+\paragraph{Indice di Accesso} L'indice di accesso $ I_{A} $ si calcola con:
+\[
+    I_{A} = \frac{\text{Popularity}(\Delta t)}{\text{Volume Allocato in fast - pick}}
+\]
+Dove $ \text{Popularity}(\Delta t) $ è il numero di accessi registrati nel periodo $ \Delta t $ (mese, anno \dots) mentre il $ \text{Volume Allocato in fast - pick} $ è il volume allocato ad un determinato codice/gruppo di codici all'interno dell'area di stoccaggio, ovvero il volume massimo a stock per quelle referenze.
+
+Questo significa che si privilegiano codici con alta frequenza di prelievo (Popularity) ma che occupano poco spazio (Volume). Un alto valore di $I_A$ indica che il codice deve essere posizionato nelle zone più accessibili ed ergonomiche (es. ad altezza uomo), massimizzando la resa dello spazio pregiato.
+
+Il risultato è in [$ \frac{\si{accessi \per udt}}{\si{\m^3}} $].
+
+%
+\section{Packaging e indentificazione}
+Il processo si conclude con l'imballaggio e l'identificazione, fondamentali per la protezione e la tracciabilità.
+%
+\paragraph{Classificazione degli Imballaggi}
+\begin{itemize}
+    \item \textbf{Primario}: Unità di vendita al consumatore (es. lattina);
+    \item \textbf{Secondario}: Raggruppamento di unità di vendita (es. vassoio da 24 lattine);
+    \item \textbf{Terziario}: Unità di carico per il trasporto (es. pallet).
+\end{itemize}
+
+%
+\paragraph{Tracciabilità e Rintracciabilità}
+\begin{itemize}
+    \item \textbf{Tracciabilità (Tracking)}: Il processo che stabilisce quali informazioni registrare lungo la filiera (``lasciare traccia'');
+    \item \textbf{Rintracciabilità (Tracing)}: La capacità di risalire a tali informazioni a ritroso;
+    \item \textbf{Il Lotto}: Insieme di prodotti con caratteristiche omogenee (stesso processo produttivo). È la chiave per legare il prodotto alla sua storia produttiva;
+    \item \textbf{Etichetta Logistica}: Utilizza standard come il codice SSCC (Serial Shipping Container Code) e il GTIN (Global Trade Item Number) all'interno di codifiche come EAN 128 per veicolare dati su lotto, scadenza e quantità.
+\end{itemize}
+
+%
+\paragraph{Sintesi per la Scelta del Sistema} La selezione del sistema di picking dipende dall'incrocio tra il numero di righe d'ordine giornaliere e il numero di codici a magazzino:
+\begin{itemize}
+    \item Bassi volumi/codici $\rightarrow$ Operatore verso materiali.
+    \item Alti volumi/codici $\rightarrow$ Sistemi automatizzati (Materiali verso operatore, Sorting, Pick-to-Box).
+    \item E-commerce: Richiede velocità e precisione estrema per la gestione dell'``ultimo miglio'', spingendo verso automazione spinta (robotica, guida autonoma).
+\end{itemize}
