@@ -54,5 +54,52 @@ Il \emph{Simple Exponential Smoothing} assume anch'esso  assenza di trend, ma at
 \]
 dove $ \alpha $ (alpha) è il coefficiente di lisciamento $ 0 < \alpha < 1 $.
 
-Per avviare il calcolo al tempo $ t=1 $, si assume solitamente $ F(1)=A(1) $.
+Il setting iniziale per l'exponential smoothing di $ F(t) $ richiede $ F(1)=A(1) $.
 
+%
+\section{Errori}
+Per valutare il modello, dobbiamo analizzare gli errori ($ f(t) - A(t) $).
+%
+\subsection{Absolute errors}
+%
+\paragraph{BIAS} Indica se la previsione sovrastima ($ \text{BIAS}>0 $) o sottostima ($ \text{BIAS}<0 $) la domanda.
+\[
+    \text{BIAS} = \sum_{t=1}^{n}\frac{f(t)-A(t)}{n}
+\]
+
+\paragraph{MAD} Il \emph{Mean Absolute Deviation} indica l'accuratezza della previsione sull'evoluzione della richiesta.
+\[
+    \text{MAD} = \sum_{t=1}^{n} \frac{\lvert f(t)-A(t) \rvert}{n}
+\]
+\begin{note}
+    $ f(t)-A(t) $ viene calcolato in valore assoluto.
+\end{note}
+
+\paragraph{MSD} Il \emph{Mean Square Deviation}, da un punto di vista statistico, è simile alla varianza stocastica di una variabile.
+\[
+    \text{MSD} = \sum_{t=1}^{n} \frac{{\left(f(t)-A(t)\right)}^{2}}{n}
+\]
+\begin{note}
+    La \emph{varianza stocastica} misura la dispersione dei valori di una variabile aleatoria (o di un processo stocastico) attorno al proprio valore atteso (media).
+\end{note}
+
+%
+\subsection{Relative errors}
+%
+\paragraph{MPE (Mean Percentage Error)}
+\[
+    \text{MPE}=(\frac{1}{n})\sum_{t=1}^{n}\frac{f(t)-A(t)}{A(t)}
+\]
+\paragraph{MAPE (Mean Absolute Percentage Error)}
+\[
+    \text{MAPE}=(\frac{1}{n})\sum_{t=1}^{n}\frac{\lvert f(t)-A(t) \rvert}{A(t)}
+\]
+%
+\paragraph{Percentage errors}
+%
+
+\begin{flalign*}
+    \%\mathit{BIAS} & = \frac{\text{BIAS}}{\sum_{t=1}^{n}A(t)} &
+    \%\mathit{MAD}  & = \frac{\text{MAD}}{\sum_{t=1}^{n}A(t)}  &
+    \%\mathit{MSD}  & = \frac{\text{MSD}}{\sum_{t=1}^{n}A(t)}  &   &
+\end{flalign*}
