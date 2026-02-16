@@ -1,3 +1,58 @@
 \lecture{Forecasting}{15~-~02~-~2026}
+L'obiettivo fondamentale che ci poniamo è prevedere la domanda futura per scopi di pianificazione. Analizzeremo sia gli approcci qualitativi che, soprattutto, quelli quantitativi (Time Series), concentrandoci sulle formule e le logiche di applicazione.
+
 %
-as
+\section{Fondamenti del Forecasting}
+Prima di entrare nei modelli matematici, è essenziale comprendere la natura stessa delle previsioni. Esistono tre leggi immutabili che dovete tenere a mente:
+\begin{enumerate}
+    \item Le \textbf{previsioni sono sempre sbagliate}! Non aspettatevi la perfezione;
+    \item Le \textbf{previsioni cambiano sempre}! Sono dinamiche;
+    \item \textbf{Più ci spingiamo nel futuro, meno affidabile sarà la previsione}. Questo concetto è visivamente rappresentato dalla ``Trumpet of Doom'' (Tromba del Giudizio), dove l'incertezza si allarga esponenzialmente con il passare del tempo (es. 16 settimane vs 40\%).
+\end{enumerate}
+La domanda aggregata si compone generalmente di diverse componenti: un livello base, una tendenza (\emph{trend}), una componente stagionale, una ciclica e una componente random (\emph{rumore}).
+
+%
+\subsection{Metodi Qualitativi}
+Quando i dati storici sono scarsi o assenti (es. nuovi prodotti), ricorriamo a metodi qualitativi:
+\begin{enumerate}
+    \item \emph{Intenzione d'acquisto}: Sondaggi diretti ai compratori sulle quantità che intendono acquistare;
+    \item \emph{Test Marketing}: Fondamentale per il lancio di nuovi prodotti (innovazione);
+    \item \emph{Sales Force Composite}: Si basa sull'opinione dei responsabili vendite, che conoscono il proprio territorio meglio di chiunque altro;
+    \item \emph{Metodo Esecutivo (Jury)}: Un comitato di dirigenti discute e concorda una previsione;
+    \item \emph{Metodo Delphi}: Coinvolge esperti interni ed esterni che non si incontrano mai. Un moderatore raccoglie le stime, le aggrega e le rimanda indietro per ulteriori stime finché non si raggiunge un consenso (convergenza).
+\end{enumerate}
+
+%
+\subsection{Metodi Quantitativi}
+L'obiettivo qui è predire il futuro basandosi sul passato, ``lisciando'' il rumore (\emph{smoothing}).
+
+Esistono due metodologie:
+\begin{enumerate}
+    \item Casual forecasting;
+    \item Time Series forecasting.
+\end{enumerate}
+
+%
+\subsubsection{Moving Average}
+Utilizzato quando non c'è trend (domanda stazionaria). Si basa sul dare uguale peso alle ultime $ m $ osservazioni.
+\[
+    F(t) = \frac{\sum_{i=t-m+1}^{t}A(t)}{m}
+\]
+dove $ A(t) $ è la domanda reale al tempo $ t $ e $ m $ è il numero di periodi considerati.
+
+\begin{note}
+    Un $ m $ più grande ``liscia'' di più la curva ma la rende meno reattiva ai cambiamenti recenti.
+\end{note}
+
+\todo[inline]{Aggiungi img pg 7 \dots}
+
+%
+\subsubsection{Smorzamento Esponenziale}
+Il \emph{Simple Exponential Smoothing} assume anch'esso  assenza di trend, ma attribuisce un peso decrescente esponenzialmente alle osservazioni passate:
+\[
+    F(t) = \alpha A(t)+ (1 - \alpha) F (t-1)
+\]
+dove $ \alpha $ (alpha) è il coefficiente di lisciamento $ 0 < \alpha < 1 $.
+
+Per avviare il calcolo al tempo $ t=1 $, si assume solitamente $ F(1)=A(1) $.
+
