@@ -42,6 +42,106 @@ ottenuta in modo:
 \end{itemize}
 
 %
+\subsection{Risorse}
+
+\begin{gather*}
+    \text{Risorse} = \left\{ m_{1},m_{2}, \dots, m_{i}, \dots, m_{m} \right\} \\
+    \text{Risorse}~i = 1, \dots, m
+\end{gather*}
+
+Parametri:
+\begin{itemize}
+    \item $ 1 $ Single Machine: tutti i job vengono eseguiti sull'unica risorsa;
+    \item $ P_{m} $ Paralle Machine: i job possono essere eseguiti su una delle $ m $ risorse (identiche o meno) disponibili;
+    \item $ F_{m} $ Flow shop: i job devono essere eseguiti nello stesso ordine sulle $ m $ macchine disponibili
+          \begin{itemize}
+              \item \emph{Skip flow shop}: alcuni job vengono eseguiti su una sola macchina;
+              \item \emph{Re-entrant flow shop}: alcuni job presentano dei cicli;
+          \end{itemize}
+    \item $ O_{m} $ Open shop: i job devono essere eseguiti sulle $ m $ macchine disponibili;
+    \item $ J_{m} $ Job shop: ciascun job deve essere eseguito su un diverso sottoinsieme delle $ m $ macchine disponibili.
+\end{itemize}
+
+%
+\subsection{Misure}
+Per valutare la bontà di una schedulazione, utilizziamo diverse metriche temporali:
+
+\begin{multicols*}{2}
+    %
+    \paragraph{Completition time} Istante in cui il job $ j $ termina.
+    \[
+        C_{j}
+    \]
+
+    \paragraph{Lateness} Differenza tra il Completion time e la due date del job $ j $. Se positiva indica ritardo, se negativa anticipo.
+    \[
+        L_{j}= C_{j} - d_{j}
+    \]
+
+    %
+    \paragraph{Tardiness} Indica il ritardo, coincide con la Lateness se questa è positiva, è nulla in caso contrario.
+    \[
+        T_{j} = \max(0,L_{j})
+    \]
+
+    %
+    \paragraph{Earliness} Indica l'anticipo, coincide (in valore assoluto) con la Lateness se questa è negativa, è nulla in caso contrario.
+    \[
+        E_{j} = \max(0,-L_{j})
+    \]
+
+    %
+    \paragraph{Flow time} Differenza tra il Completion time e il release time del job $ j $.
+    \[
+        F_{j} = C_{j}-r_{j}
+    \]
+
+    %
+    \paragraph{Makespan} Istante in cui termina l'ultima operazione dell'ultimo job. Coincide con il Completion time dell'ultimo job.
+    \[
+        C_{\max}
+    \]
+
+    %
+    \paragraph{Idleness} Differenza tra il Makespan e la somma dei process time dei job eseguiti sulla macchina $ i $.
+    \[
+        I_{i} = C_{\max}-\textstyle\sum_{j}p_{ij}
+    \]
+
+    \begin{note}
+        Alcune misure sono equivalenti. Ad esempio, minimizzare la lateness massima ($ L_{\max} $) equivale a minimizzare la tardiness massima ($ T_{\max} $) se esiste almeno un job in ritardo.
+    \end{note}
+\end{multicols*}
+
+%
+\paragraph{Massimo tempo di completamento o Makespan}
+\[
+    C_{\max} = \text{max}_{j}C_{j}
+\]
+Misura rispetto all'istante $ 0 $ del tempo necessario a completare le attività.
+
+%
+\paragraph{Massima Lateness}
+\[
+    L_{\max} = \text{max}_{j}L_{j}
+\]
+Misura del ritardo del job che è maggiormente in ritardo rispetto alla sua data di consegna (se negativa misura l'anticipo del job completato con minore anticipo rispetto alla sua data di consegna).
+
+%
+\paragraph{Massima Tardiness}
+\[
+    T_{\max} = \max(0,L_{\max})
+\]
+Misura del ritardo del job che è maggiormente in ritardo rispetto alla sua data di consegna.
+
+%
+\paragraph{Tempo di completamento totale}
+\[
+    \textstyle\sum_{j}C_{j} \cdot (\textstyle\sum _{j}w_{j}C_{j})
+\]
+
+
+%
 \section{Notazione di Graham}
 I problemi di schedulazione sono formalizzati tramite la notazione:
 \[
@@ -53,3 +153,76 @@ dove:
     \beta = \text{eventuali caratteristiche particolari}; \\
     \gamma = \text{funzione obiettivo}
 \end{gather*}
+
+\begin{example}
+    Può essere un esempio della notazione di Graham:
+    \[
+        1 / / \textstyle \sum_{j}C_{j}
+    \]
+    Problema su macchina singola che richiede la minimizzazione del tempo di completamento totale (Risolto con la regola SPT).
+\end{example}
+
+\begin{example}
+    Un'altro esempio:
+    \[
+        F2 / / C_{\max}
+    \]
+    Problema di flow shop su due macchine che richiede la minimizzazione del makespan (Risolto con l'algoritmo di Johnson).
+\end{example}
+
+\begin{example}
+    Infine:
+    \[
+        1 / \text{prec} / L_{\max}
+    \]
+    Problema su macchina singola con vincoli di precedenza tra i job che richiede la minimizzazione della massima lateness (Risolto con l'algoritmo di Lawler).
+\end{example}
+
+
+%
+\section{Regole di priorità statistiche}
+Queste regole, dette ``One-shot'', ordinano i job all'inizio e non cambiano durante l'esecuzione. Sono fondamentali perché forniscono soluzioni ottime per specifici problemi su macchina singola ($ 1 / / \dots $).
+
+%
+\paragraph{SPT (Shortest Process Time)} La priorità di un job è inversamente proporzionale al suo tempo di processo. Sequenzia i job in ordine non decrescente di $ p_{j} $. Fornisce la soluzione ottima del problema $ 1 / / \sum_{j} C_{j} $
+%
+\paragraph{WSPT (Weighted Shortest Process Time)} Analoga alla SPT tiene conto dei pesi dei job definendo la priorità come rapporto $ w_{j} / p_{j} $. Ordina i job secondo valori non crescenti di $ w_{j} / p_{j} $. Fornisce la soluzione ottima del problema $ 1 / / \sum_{j} w_{j}C_{j} $
+
+%
+\paragraph{LPT (Longest Process Time)} La priorità di un job è proporzionale al suo tempo di processo. Sequenzia i job in ordine non crescente di $ p_{j} $. Fornisce una soluzione non ottima del problema $ P_{m} / / C_{\max} $ bilanciando i carichi di lavoro. Si usa quando i buffer di una linea sono pieni consentendo alle macchine a valle di svuotarli
+
+%
+\section{Algoritmi risolutivi}
+%
+\subsection{Algo: Johnson}
+Risolve in modo \emph{ottimo} il problema $ F2 / / C_{\max} $.
+\begin{enumerate}[leftmargin=2.1cm, label=Passo \arabic*.]
+    \item Porre $ k=1 $ e $ l=n $ numero di job;
+    \item Cercare $ \min\{ p_{ij} \} $:
+          \begin{itemize}
+              \item Se $ \min_{i,j} \{ p_{ij} \} = \min_{j} \{ p_{1j} \}$ mettere $ j $ in posizione $ k $ e $ k=k+1 $;
+              \item Se $ \min_{i,j} \{ p_{ij} \} = \min_{j} \{ p_{2j} \}$ mettere $ j $ in posizione $ l $ e $ l=l-1 $;
+          \end{itemize}
+    \item Se la sequenza non è completa rifare il passo 2.
+\end{enumerate}
+
+%
+\subsection{Algo: Campbell}
+Fornisce una soluzione non ottima al problema $ F_{m} / / C_{\max} $, è un metodo euristico.
+\begin{enumerate}[leftmargin=2.1cm, label=Passo \arabic*.]
+    \item Per $ k=1, \dots , m-1 $ creare le macchine:
+          \[
+              M1^{k}=\left\{\bigcup_{l=1}^{k}M_l\right\},\quad P1_{j}^{k}=\sum_{l=1}^{k}p_{jl},\quad M2^{k}=\left\{\bigcup_{l=k+1}^{m}M_l\right\},\quad P2_{j}^{k}=\sum_{l=k+1}^{m}p_{jl}.
+          \]
+          Applicare l'algoritmo di Johnson alle macchine $ M 1^{k} $ e $ M 2^{k} $ e calcolare $ C_{\max}^{k} $;
+    \item Identificare la soluzione che fornisce il minimo makespan:
+          \[
+              C_{\text{sol}} = \min_{k=1, \dots, m-1} \left\{ C_{\max}^{k} \right\}
+          \]
+\end{enumerate}
+
+%
+\subsection{Algo: Lawler}
+Fornisce una soluzione al problema $ 1 / \text{prec} / L_{\max} $, tenendo conto dei vincoli di precedenza tra i job.
+
+\todo[inline]{Aggiungi il resto \dots}
