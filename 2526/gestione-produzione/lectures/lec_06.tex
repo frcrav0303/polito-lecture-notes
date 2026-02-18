@@ -1,0 +1,55 @@
+\lecture{Schedulazione Classica}{18~-~02~-~2026}
+%
+%
+\section{Fondamenti della Schedulazione}
+La schedulazione è il processo decisionale che riguarda l'allocazione di risorse nel tempo per l'esecuzione di compiti.
+Risolve problemi decisionali di allocazione ottimale di risorse scarse (il tempo) alle attività, di breve e brevissimo periodo, a livello di singola macchina e con capacità finita.
+
+Per affrontare questi problemi intervengono:
+\begin{itemize}
+    \item \textbf{Job}: insieme di operazioni da svolgere su una risorsa;
+    \item \textbf{Task}: singola operazione di un job svolta su una risorsa (attività);
+    \item \textbf{Resource}: entità che effettua l'operazione (macchina);
+\end{itemize}
+e la cui soluzione può essere:
+\begin{itemize}
+    \item \textbf{Sequenza}: ordine con cui i job devono essere eseguiti su ciascuna macchina;
+    \item \textbf{Schedule}: sequenza comprendente gli istanti di inizio e fine della lavorazione dei job;
+    \item \textbf{Dispatching list}: schedule in cui è indicata la risorsa da utilizzare;
+\end{itemize}
+ottenuta in modo:
+\begin{itemize}
+    \item \textbf{Statico}: tutti i job sono disponibili all'inizio del problema;
+    \item \textbf{Dinamico}: nuovi job possono arrivare nel tempo.
+\end{itemize}
+
+%
+\paragraph{Ipotesi generali} La stessa risorsa non può effettuare più di un'operazione per volta, ogni job deve essere lavorato da una risorsa per volta e le precedenze devono essere rispettate.
+
+%
+\paragraph{Ipotesi Semplificative} I modelli classici si basano su assunzioni rigide che semplificano la realtà:
+\begin{itemize}
+    \item Tutti i job sono disponibili all'inizio del problema ($ t=0 $).
+    \item I tempi di processo sono deterministici.
+    \item I tempi di processo non dipendono dalla sequenza (no setups).
+    \item Le risorse sono sempre disponibili (no failures).
+    \item Le risorse lavorano un unico job per volta.
+    \item Ogni job visita una risorsa al più una volta.
+    \item Non è possibile interrompere la lavorazione di un job.
+    \item Non vi è cancellazione di job.
+    \item I lotti sono indivisibili.
+    \item È possibile avere WIP.
+\end{itemize}
+
+%
+\section{Notazione di Graham}
+I problemi di schedulazione sono formalizzati tramite la notazione:
+\[
+    \alpha / \beta / \gamma
+\]
+dove:
+\begin{gather*}
+    \alpha = \text{sistema e numero di macchine}; \\
+    \beta = \text{eventuali caratteristiche particolari}; \\
+    \gamma = \text{funzione obiettivo}
+\end{gather*}

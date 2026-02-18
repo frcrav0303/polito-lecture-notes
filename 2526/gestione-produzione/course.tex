@@ -2,7 +2,8 @@
 \newacronym{mat}{Matlab}{Matrix Laboratory}
 \newacronym{ide}{IDE}{Integrated Development Environment}
 
-\newtcolorbox[auto counter]{stepbox}[1][]{
+\newcounter{step}
+\newtcolorbox[use counter=step]{stepbox}[1][]{
     % Stile estetico
     enhanced,
     colback=white,
@@ -10,7 +11,7 @@
     coltitle=white,
     %
     % Titolo: Passo X. Se c'è testo opzionale (#1), aggiunge ": Testo"
-    title={\textbf{Passo \thetcbcounter} \ifstrempty{#1}{}{:~#1}},
+    title={\textbf{Passo \thestep} \ifstrempty{#1}{}{:~#1}},
     %
     % Impostazioni geometriche
     sharp corners,
