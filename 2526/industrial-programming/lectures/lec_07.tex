@@ -1,0 +1,39 @@
+\lecture{Introduzione alla Fabbricazione Additiva e Processi Fondamentali}{14~-~06~-~2026}
+%
+%
+\section{Definizione ed Evoluzione Storica}
+\begin{description}
+    \item [Cos'è la Fabbricazione Additiva (FA)] Si tratta di un insieme di processi che creano oggetti aggregando materiali a partire da modelli matematici tridimensionali, tipicamente sovrapponendo strati. Procede in modo esattamente opposto ai processi sottrattivi, come l'asportazione di truciolo. Permette di ottenere geometrie anche molto complesse in poche ore, senza l'uso di utensili o attrezzature specifiche.
+    \item [Dalla Prototipazione alla Produzione] Nata negli anni '80 come Prototipazione Rapida (RP) per creare modelli concettuali e funzionali, la tecnologia è passata per le fasi di Rapid Tooling/Casting fino ad arrivare all'attuale Fabbricazione Additiva (o Rapid Manufacturing), in cui vengono prodotti i pezzi definitivi.
+    \item [Terminologia] Spesso si usa il termine ``Stampa 3D'' per indicare l'ambito domestico o le community (come i FabLab), mentre ``Fabbricazione Additiva è il termine corretto per la produzione industriale e le filiere produttive.
+\end{description}
+
+%
+\section{Classificazione dei Prototipi}
+La prototipazione serve a testare idee e fornire feedback durante lo sviluppo di un prodotto. È importante ricordare queste quattro categorie:
+\begin{enumerate}
+    \item \textbf{Prototipo Concettuale}: Serve per verifiche di forma e per l'assemblaggio, non valuta le prestazioni.
+    \item \textbf{Prototipo Funzionale}: Valuta le prestazioni tramite prove funzionali e serve a ottimizzare il prodotto per la sua funzione.
+    \item \textbf{Prototipo Tecnico}: Valuta sia le prestazioni del prodotto sia del processo produttivo.
+    \item \textbf{Prototipo Pre-serie}: Serve per la valutazione finale del prodotto, ammettendo solo poche modifiche marginali prima della produzione definitiva.
+\end{enumerate}
+
+%
+\section{Le Fasi del Processo di Fabbricazione Additiva}
+\begin{description}
+    \item [Modello 3D e Formato STL] Tutto parte da un modello CAD 3D che deve essere poligonalizzato nel formato STL (Standard Triangulation Language o Solid To Layer). Il formato STL approssima la superficie esterna del modello usando una rete di triangoli; ogni triangolo è descritto dai suoi tre vertici e da un vettore normale che punta verso l'esterno. Attenzione agli errori: l'STL può generare difetti come spazi vuoti (gap), triangoli ridondanti o intersezioni che devono essere corretti via software.
+    \item [Orientazione e Supporti] Il pezzo deve essere orientato nella macchina. Il software calcola e aggiunge delle strutture di supporto che servono ad ancorare il pezzo all'area di lavoro, proteggere le pareti laterali e, soprattutto, a sostenere i sottosquadri e le parti a sbalzo durante la stampa.
+    \item [Slicing] L'operazione critica che condiziona la precisione finale del pezzo. Il modello STL viene intersecato con piani paralleli per ricavare gli strati bidimensionali. Lo slicing può essere:
+          \begin{itemize}
+              \item \emph{Uniforme}: strati di spessore costante.
+              \item \emph{Adattativo}: spessore variabile in funzione della curvatura della superficie per migliorare la precisione.
+              \item \emph{Stair-stepping}: è l'effetto indesiderato a ``gradini'' sulle superfici curve, tipico dei processi a strati.
+          \end{itemize}
+    \item [Costruzione e Post-trattamento] Dopo la costruzione strato su strato, il pezzo richiede operazioni di pulizia, rimozione manuale o chimica dei supporti, trattamenti termici (per distendere le tensioni residue) e finiture superficiali (sabbiatura, lucidatura, verniciatura) per migliorare l'estetica e la meccanica.
+\end{description}
+
+%
+\section{Vantaggi e Svantaggi}
+\begin{description}
+    \item [Vantaggi] Offre libertà di design illimitata, permette di creare strutture alleggerite o assiemi già integrati in una sola operazione (senza utensili o sistemi di fissaggio) ed è ideale per la personalizzazione anatomica ed ergonomica.
+\end{description}

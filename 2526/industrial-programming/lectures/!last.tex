@@ -1,0 +1,34 @@
+\newpage
+\section*{Glossario Tecnico}
+%
+\noindent{\large\sffamily\bfseries\textcolor{black!60}{Robotics Programming}}\par
+\begin{description}
+    \item [TCP (Tool Center Point)] Il punto matematico esatto posizionato sull'utensile finale che viene tracciato, controllato e guidato dal software del controllore.
+    \item [Singolarità (Singularity)] Configurazione geometrica critica (``zona morta'') in cui il determinante della matrice Jacobiana è nullo ($\det(J)=0$), rendendo impossibile il calcolo matematico di una soluzione cartesiana lineare.
+    \item [Reference Frame (Sistema di Riferimento)] Sistema di coordinate cartesiane ortogonali ($X, Y, Z$) che stabilisce la posizione degli oggetti nello spazio relativamente alla base fissa del robot o al pezzo.
+    \item [Posa (Pose)] Lo stato spaziale complessivo del corpo rigido, determinato dall'unione del vettore di posizione lineare ($p_x, p_y, p_z$) e dai parametri di orientamento angolare ($a_x, a_y, a_z$) espressi tipicamente in rappresentazione asse-angolo o matriciale.
+\end{description}
+
+\vspace{0.5cm}
+\noindent{\large\sffamily\bfseries\textcolor{black!60}{Fabbricazione Additiva (Polimeri Solidi)}}\par
+\begin{description}
+    \item [FDM (Fused Deposition Modelling)] Processo di estrusione di materiale basato sulla spinta e fusione di un filamento di polimero termoplastico all'interno di una camera riscaldata. Permette di ottenere prototipi funzionali e stampi pre-serie.
+    \item [CFF (Continuous Fiber Fabrication)] Tecnologia di estrusione avanzata che impiega una testa a doppio ugello per depositare simultaneamente una matrice termoplastica e centinaia di fibre di rinforzo continue nello stesso strato.
+    \item [Polimeri Termoplastici] Materiali di base solidi classificabili per struttura (Amorfi o Semicristallini) e per prestazioni (Commodity, Engineering, Performance) che rammolliscono se riscaldati.
+    \item [Fibre di Rinforzo] Filamenti continui inseriti per massimizzare le proprietà meccaniche dei pezzi in CFF. Includono la fibra di vetro (ottimo rapporto resistenza/costo), la fibra di carbonio (miglior rapporto resistenza/peso) e il Kevlar\texttrademark (massima resistenza all'abrasione).
+    \item [Matrice Polimerica] Il filamento base nel processo CFF che fa da legante per le fibre. I principali sono il Nylon e l'Onyx\texttrademark (Nylon caricato con microfibre di carbonio, rinomato per l'ottima finitura estetica).
+    \item [Supporti Solubili] Strutture ausiliarie prodotte in FDM con un materiale dedicato, progettato appositamente per essere sciolto e rimosso tramite l'immersione in un bagno in soluzione acquosa.
+    \item [Eiger] Software di slicing dedicato ai processi CFF (es. Markforged) che consente di programmare in dettaglio la specifica strategia e la direzione di rinforzo delle fibre per ogni singolo strato.
+\end{description}
+
+\vspace{0.5cm}
+\noindent{\large\sffamily\bfseries\textcolor{black!60}{Fabbricazione Additiva (Polimeri Liquidi)}}\par
+\begin{description}
+    \item [Vat Photopolymerization] Categoria di tecnologie che solidificano selettivamente una resina fotopolimerica liquida in una vasca tramite radiazioni luminose (laser o proiettori).
+    \item [SLA (Stereolitografia)] Processo a vasca che utilizza un laser UV per polimerizzare uno strato alla volta; richiede supporti dello stesso materiale del pezzo.
+    \item [DLP (Digital Light Processing)] Evoluzione della SLA che usa un proiettore digitale UV per solidificare un intero piano strato per strato, aumentando la velocità di produzione.
+    \item [CLIP (Continuous Liquid Interface Production)] Tecnologia che utilizza una finestra permeabile all'ossigeno per creare una zona di inibizione liquida, permettendo un'elevazione continua del pezzo senza interruzioni.
+    \item [Material Jetting / PolyJet] Tecnologia di deposizione discreta che spara microscopiche gocce di fotopolimero solidificate istantaneamente da lampade UV; permette l'uso di supporti solubili e la stampa multi-materiale/multi-colore (materiali digitali).
+\end{description}
+% \newpage
+% \section*{Considerations}

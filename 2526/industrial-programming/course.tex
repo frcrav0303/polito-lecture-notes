@@ -1,0 +1,40 @@
+%
+\newacronym{mat}{Matlab}{Matrix Laboratory}
+\newacronym{ide}{IDE}{Integrated Development Environment}
+
+% === Custom Chapter / Module Command ===
+\newcounter{chapt}
+\renewcommand{\thechapt}{\Roman{chapt}} % Usa numeri romani (I, II, III). Cambia in \arabic per (1, 2, 3)
+
+% Usiamo \NewDocumentCommand da xparse: 'o' = optional, 'm' = mandatory
+\NewDocumentCommand{\chapt}{ o m }{%
+    \clearpage % Forza l'inizio su una nuova pagina
+    \thispagestyle{empty} % Rimuove header e footer da questa pagina di "copertina"
+    \refstepcounter{chapt}
+
+    \vspace*{0.15\textheight} % Spazio verticale per centrare otticamente il titolo
+
+    \begin{flushleft}
+        {\xcharter\huge\bfseries \textcolor{black!60}{Modulo \thechapt}} \par\vspace{0.5cm}
+        {\sffamily\Huge\bfseries #2} \par
+
+        % \IfValueT controlla se il parametro opzionale 'o' è stato inserito
+        \IfValueT{#1}{%
+            \vspace{0.3cm}
+            {\xcharter\Large\itshape Prof. #1} % Usa \sffamily per chiamare il Source Sans Pro
+        }
+    \end{flushleft}
+
+    \vspace{2cm}
+
+    % Aggiunge la voce all'indice (TOC).
+    \addcontentsline{toc}{part}{Modulo \thechapt: #2}
+
+    % --- Gestione Contatori ---
+    \setcounter{lecture}{0}    % Fa ripartire le lezioni da 1 per ogni nuovo professore
+    \setcounter{assignment}{0} % Fa ripartire gli assignment da 1
+    \setcounter{section}{0}    % Fa ripartire le sezioni da 1
+
+    \vfill
+    \clearpage % Forza l'inizio del testo vero e proprio sulla pagina successiva
+}

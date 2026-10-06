@@ -1,0 +1,117 @@
+\lecture{Fondamenti Matematici dei Cobot}{09~-~06~-~2026}
+%
+%
+\section{Architettura Fisica dei Cobot serie URe}
+A differenza dei robot industriali tradizionali, i cobot sono progettati per operare in sicurezza a stretto contatto con l'uomo senza barriere protettive, basandosi su modelli matematici precisi e su un feedback dinamico in tempo reale.
+
+La famiglia URe si compone di:
+\begin{enumerate}
+    \item UR3e: Sbraccio di $500\text{ mm}$, carico utile (payload) di $3\text{ kg}$, massa di $11.2\text{ kg}$.
+    \item UR5e: Sbraccio di $850\text{ mm}$, carico utile di $5\text{ kg}$, massa di $20.6\text{ kg}$.
+    \item UR10e: Sbraccio di $1300\text{ mm}$, carico utile di $10\text{ kg}$, massa di $33.5\text{ kg}$.
+    \item UR10e: Sbraccio di $1300\text{ mm}$, carico utile di $10\text{ kg}$, massa di $33.5\text{ kg}$.
+\end{enumerate}
+%
+\subsection{Anatomia della Macchina}
+La macchina è definita da \textbf{6 giunti rivoluti} (che gli permette 6 DoF):
+\begin{enumerate}
+    \item Base;
+    \item Shoulder;
+    \item Elbow;
+    \item Wrist 1;
+    \item Wrist 2;
+    \item Wrist 3.
+\end{enumerate}
+I giunti 2, 3 e 4 presentano assi $ Z $ paralleli: questa specifica scelta costruttiva semplifica drasticamente i calcoli cinematici.
+
+%
+\paragraph{Limiti di Movimento} Tutti i sei giunti hanno un range di movimento di $\pm360^\circ$. Utilizzano riduttori armonici standardizzati con un rapporto di riduzione $n=101$.
+%
+\subsection{Craig Convention (parametri D-H modificati)}
+Il braccio fisico viene astratto in una tabella matematica utilizzando dei parametri fondamentali:
+\begin{enumerate}
+    \item \textbf{Link Length} ($a_{i-1}$): Determinano i principali archi di rotazione ($a_2, a_3$).
+    \item \textbf{Link Offset} ($d_i$): Rappresentano il design sfalsato dei giunti ($d_4, d_5$) che consente la rotazione a $\pm360^\circ$ evitando collisioni fisiche immediate.
+\end{enumerate}
+
+\begin{note}
+    Possiamo tradurre in inglese la parola ``giunto'' in ``\emph{joint}'', ma talvolta viene anche utilizzato ``\emph{link}''.
+\end{note}
+
+%
+\section{Forward Pose Kinematics (FPK)}
+Goal: \textbf{Analisi posizionale statica: calcolo delle coordinate spaziali e inversione geometrica}.
+
+Secondo la cinematica diretta, FPK, si calcola la posa cartesiana dell'end-effector partendo da 6 angoli di giunto noti $(\theta_1 \dots \theta_6)$. Si basa sulla moltiplicazione sequenziale delle matrici di trasformazione omogenea $4\times4$:
+\[
+    T_{0}^{6} = T_1^0 T_2^1 T_3^2 T_4^3 T_5^4 T_6^5
+\]
+
+\todo{SEC 2 da finire}
+
+%
+\section{Cinematica delle Velocità e Singolarità}
+%
+\subsection{La Matrice Jacobiana}
+La Matrice Jacobiana $ [J] $ è una matrice di trasformazione lineare $6\times6$ che rappresenta una derivata multidimensionale. Mappa le velocità dei giunti nelle velocità cartesiane dell'utensile:
+\[
+    [\dot{X}] = [J(\Theta)][\dot{\Theta}]
+\]
+Questa determina come le velocità di rotazione dei singoli 6 giunti si sovrappongano per creare la velocità traslazionale ($v$) e rotazionale ($\omega$) complessiva della flangia. Al contrario dei parametri D-H statistici, la \emph{Jacobiana} varia continuamente in funzione degli angoli di giunto correnti e deve essere ricalcolato ad ogni ciclo di controllo.
+%
+\subsection{Navigare le Singolarità quando la Matematica Fallisce}
+Le singolarità matematiche si verificano quando il determinante della matrice Jacobiana si annulla:
+\[
+    \det(J) = 0
+\]
+In questa condizione, le velocità di giunto richieste per produrre un movimento cartesiano tendono all'infinito, portando a movimenti incontrollati e pericolosi.
+
+Un modo per risolvere il problema sarebbe avere un software che controlla il $\det(J)$ in tempo reale, ponendo un tetto massimo alle velocità dei giunti per garantire la sicurezza del cobot anche in prossimità della singolarità.
+%
+\paragraph{Singolarità specifiche della serie UR}
+\begin{enumerate}
+    \item \emph{Singolarità di Base} (Base Singularity): L'origine del polso si trova direttamente sull'asse Z della base.
+    \item \emph{Singolarità di Gomito} (Elbow Singularity): Il braccio è completamente disteso o completamente ripiegato su se stesso.
+    \item \emph{Singolarità di Polso} (Wrist Singularity): Si verifica quando l'angolo $\theta_5 = 0^\circ$. È una singolarità interna, il che significa che si trova pericolosamente al centro del range di lavoro utile del polso a causa del design con offset.
+\end{enumerate}
+
+%
+\subsection{Controllo a Velocità Inversa (Resolved-Rate Control)}
+In alternativa all'IPK statico, la soluzione basata sulla velocità inversa di Whitney si concentra su movimenti fluidi continui:
+\[
+    [\dot{\Theta}] = [J(\Theta)]^{-1}[\dot{X}]
+\]
+Questo metodo inverte il Jacobiano anziché le complesse matrici di posa, risultando computazionalmente più leggero e permettendo al cobot di reagire istantaneamente alla guida manuale (hand-guiding) o agli ostacoli.
+
+%
+\section{Dinamica e Statica dello Spazio di Configurazione}
+La dinamica è lo studio delle forze, delle coppie e delle equazioni differenziali che governano il movimento reale.
+\begin{description}
+    \item [Dinamica Diretta (Simulazione)] Date le coppie applicate dagli attuatori ($\tau$), calcola il movimento fisico risultante $(\Theta, \dot{\Theta}, \ddot{\Theta})$
+    \item [Dinamica Inversa (Controllo)] Dato un movimento desiderato, calcola le coppie necessarie che i motori devono erogare. Risolve equazioni differenziali ordinarie (ODE) fortemente accoppiate e non lineari.
+\end{description}
+L'algoritmo \textbf{Newton-Euler Ricorsivo} è lo standard utilizzato dalla serie URe. Esegue un'iterazione verso l'esterno (outward) per calcolare la cinematica (velocità/accelerazioni) e un'iterazione verso l'interno (inward) per calcolare la cinetica (forze/momenti).
+
+%
+\subsection{Equazione Dinamica Fondamentale}
+\begin{theorem}
+    Ogni movimento fisico si basa sul calcolo continuo della seguente matrice dello spazio di configurazione:
+    \[
+        \tau = M(\Theta)\ddot{\Theta} + B(\Theta)\dot{\Theta}\dot{\Theta} + C(\Theta)\dot{\Theta}^2 + G(\Theta)
+    \]
+    dove:
+    \begin{description}
+        \item $ \tau $: Coppie richieste ai giunti;
+        \item $M(\Theta)$ (Matrice di Massa): Tiene conto dell'inerzia di ogni singolo link (dalla base di $1.98\text{ kg}$ fino alla flangia utensile di $0.15\text{ kg}$);
+        \item $B(\Theta)$ (Matrice di Coriolis): Forze generate dalle rotazioni simultanee dei giunti;
+        \item $C(\Theta)$ (Matrice Centripeta): Forze che spingono verso l'esterno durante i movimenti rapidi di sbraccio;
+        \item $G(\Theta)$ (Vettore di Gravità): Equivale a un'accelerazione continua di 1G verso l'alto calcolata rispetto alla base del robot;
+    \end{description}
+\end{theorem}
+%
+\subsection{Applicazione delle Forze (Statica e il Wrench)}
+Per applicare una forza statica o un momento all'ambiente esterno, il robot mappa le specifiche cartesiane richieste (definite come Wrench $\{W\}$) in coppie dei singoli giunti $\{\tau\}$:
+\[
+    \tau = [J]^T \{W\}
+\]
+A differenza del controllo di velocità, la statica utilizza la \emph{Trasposta della Jacobiana} $[J]^T$. Questa operazione non richiede alcuna inversione matriarcale, è computazionalmente leggerissima e non soffre mai di singolarità. Questa esatta relazione matematica permette la sensibilità alla forza, il rilevamento delle collisioni e la guida manuale senza sforzo che garantiscono la sicurezza intrinseca della serie URe.

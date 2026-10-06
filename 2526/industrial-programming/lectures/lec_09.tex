@@ -1,0 +1,44 @@
+\lecture{Tecnologie per Materiali Polimerici in Fase Solida}{02~-~07~-~2026}
+%
+\section{Materiali Polimerici Solidi: La Tabella Periodica}
+\begin{itemize}
+    \item I materiali di partenza per queste tecnologie additive sono prevalentemente \textbf{polimeri termoplastici} forniti sotto forma di filamento solido.
+    \item Dal punto di vista della struttura molecolare, si suddividono in \textbf{Amorfi} (es. ABS, PS) e \textbf{Semicristallini} (es. PA, PP).
+    \item In ambito industriale, i polimeri per la stampa 3D vengono classificati in una "tabella periodica" basata sulle prestazioni:
+          \begin{itemize}
+              \item \textit{Commodity:} Polimeri plastici di uso comune, economici e facili da stampare (es. PLA).
+              \item \textit{Engineering (Tecnopolimeri):} Materiali con ottime proprietà meccaniche, termiche e chimiche (es. Nylon/PA, PC, PETG).
+              \item \textit{Performance (Super-polimeri):} Materiali ad altissime prestazioni per impieghi critici, capaci di resistere ad alte temperature e carichi elevati (es. PEEK, PEI/Ultem).
+          \end{itemize}
+\end{itemize}
+
+\section{Tecnologie di Estrusione di Materiale (FDM/FFF)}
+La Fabbricazione a Fusione di Filamento (FDM - Fused Deposition Modeling) è il processo additivo più diffuso e accessibile.
+\begin{description}
+    \item [Principio di funzionamento] Un filamento termoplastico viene trascinato, fuso attraverso un ugello riscaldato ed estruso strato su strato (\textit{layer by layer}) per formare il componente tridimensionale.
+    \item [Supporti e Anisotropia] È essenziale prevedere strutture di supporto per le parti a sbalzo. L'aspetto più critico della tecnologia è l'\textbf{anisotropia meccanica}: le caratteristiche di resistenza lungo l'asse Z sono notevolmente inferiori rispetto agli assi X-Y a causa della debole adesione termica tra gli strati sovrapposti.
+\end{description}
+
+\section{Continuous Fiber Fabrication (CFF)}
+La tecnologia CFF (brevettata da Markforged) rappresenta un'evoluzione dell'estrusione standard. Permette di realizzare parti in materiale composito a matrice polimerica rinforzata con fibre continue, raggiungendo prestazioni meccaniche equiparabili a quelle dell'alluminio.
+\begin{itemize}
+    \item \textbf{Struttura del materiale:} Il processo utilizza tipicamente un doppio estrusore. Il componente è formato da una \textit{Matrice} plastica principale (spessore di strato $ 50-200 \si{\micro\metre} $) in cui viene annegata una \textit{Fibra di rinforzo} continua (spessore circa $ 100-125 \si{\micro\metre} $, composta da centinaia di singole fibre).
+    \item \textbf{Materiali di Matrice:}
+          \begin{itemize}
+              \item \textit{Nylon:} Il prodotto base, che offre un'ottima tenacità e resistenza chimica.
+              \item \textit{Onyx:} Un filamento in Nylon caricato con microfibre di carbonio tritate. Garantisce un'ottima finitura estetica, elevata rigidità di base e stabilità dimensionale.
+          \end{itemize}
+    \item \textbf{Materiali di Rinforzo (Combinazioni e Applicazioni):}
+          \begin{itemize}
+              \item \textit{Fibra di Vetro:} Rappresenta il miglior rapporto tra resistenza e costo.
+              \item \textit{Fibra di Kevlar:} È la miglior soluzione per la resistenza all'abrasione, garantendo elevata flessibilità e un eccezionale assorbimento degli urti.
+              \item \textit{Fibra di Carbonio:} Fornisce il miglior rapporto resistenza/peso in assoluto, ideale per applicazioni che richiedono la massima rigidità strutturale e leggerezza.
+          \end{itemize}
+\end{itemize}
+
+\section{Strategie di Rinforzo e Slicing nel CFF}
+\begin{itemize}
+    \item Il software di slicing (come Eiger) è fondamentale per definire l'orientamento delle sollecitazioni.
+    \item \textbf{Ottimizzazione Layer by Layer:} La particolarità del CFF è che la strategia di rinforzo può essere scelta e modificata in maniera indipendente per ogni singolo strato.
+    \item \textbf{Tipologie di riempimento:} Si può optare per un rinforzo \textit{Concentrico} (le fibre seguono il perimetro del pezzo, utile per rinforzare fori o pareti esterne) o \textit{Isotropico} (le fibre riempiono l'intera area con pattern incrociati per resistere a flessione e torsione). Questo garantisce un'ampia gamma di soluzioni per supportare i più severi requisiti applicativi.
+\end{itemize}

@@ -1,0 +1,47 @@
+\lecture{Tecnologie per Materiali Polimerici in Fase Liquida}{02~-~07~-~2026}
+%
+%
+\section{Introduzione e Classificazione}
+\begin{itemize}
+    \item \textbf{Normativa:} La terminologia e i principi della fabbricazione additiva (FA) sono standardizzati dalla norma ISO/ASTM 52900:2021.
+    \item \textbf{Dominio dei Polimeri:} I polimeri sono i materiali più utilizzati in assoluto nella fabbricazione additiva.
+    \item \textbf{Stato di partenza:} Le tecnologie per i polimeri si classificano in base allo stato del materiale di partenza: Polvere (es. SLS, MJF), Solido/Filamento (es. FDM) e \textbf{Liquido}.
+    \item \textbf{Tecnologie a base liquida:} Si dividono in \textit{Fotopolimerizzazione in vasca} (SLA, DLP) e \textit{Deposizione di gocce} (Material Jetting / Polyjet). Generalmente, le parti prodotte hanno tolleranze paragonabili alle lavorazioni convenzionali, ma presentano rugosità che possono richiedere finitura manuale.
+\end{itemize}
+
+\section{Vat Photopolymerization: Stereolitografia (SLA)}
+La Stereolitografia è stata la prima tecnologia commerciale, inventata da Charles Hull (3D Systems, 1987).
+\begin{itemize}
+    \item \textbf{Principio di funzionamento:} Un laser UV solidifica selettivamente una resina fotopolimerica liquida contenuta in una vasca. La piattaforma (elevatore) si abbassa (o si alza) ad ogni strato, costruendo il pezzo dal basso verso l'alto.
+    \item \textbf{Materiali (Fotopolimeri):} Si utilizzano resine termoindurenti. Storicamente si usavano \textit{Acrilati} (molto reattivi ma soggetti a ritiro/deformazione) ed \textit{Epossidiche} (più precise e resistenti, ma fragili e sensibili all'umidità). Le resine moderne sono ibride per bilanciare questi effetti.
+    \item \textbf{Il problema del Ritiro (Curling):} Durante la fotopolimerizzazione, il volume si riduce. Questo restringimento tira gli strati sottostanti, accumulando tensioni residue che portano all'arricciamento dei bordi (deformazione).
+    \item \textbf{Strutture di Supporto (Importante per l'esame):} Sono fondamentali per ancorare il pezzo e contrastare la deformazione. Nella SLA i supporti sono creati con lo \textit{stesso identico materiale} del pezzo e devono essere rimossi meccanicamente.
+    \item \textbf{Vantaggi:} Eccellente precisione ($<0,1$ mm), strati sottilissimi ($0,05 - 0,025$ mm), ottima finitura superficiale, possibilità di usare resine trasparenti o per microfusione (calcinabili).
+    \item \textbf{Svantaggi:} Necessità di post-trattamento (forno UV per completare la polimerizzazione), obbligo di lavorare a "vasca piena" (costo e gestione del liquido), tensioni residue.
+\end{itemize}
+
+\section{Vat Photopolymerization: DLP e CLIP}
+\begin{itemize}
+    \item \textbf{Digital Light Processing (DLP):} Simile alla SLA, ma al posto del laser utilizza un \textbf{proiettore digitale UV}.
+          \begin{itemize}
+              \item \textit{Vantaggio chiave:} Polimerizza l'intera sezione del piano in un solo istante (flash), rendendo il processo generalmente più rapido per strato rispetto al laser che deve tracciare il profilo.
+          \end{itemize}
+    \item \textbf{Continuous Liquid Interface Production (CLIP - Carbon 3D):} È un'evoluzione rivoluzionaria.
+          \begin{itemize}
+              \item Utilizza una finestra permeabile all'ossigeno sul fondo della vasca.
+              \item L'ossigeno inibisce la polimerizzazione, creando una "dead zone" (Oxygen Inhibition Layer) liquida tra la finestra e il pezzo in formazione.
+              \item Questo impedisce al pezzo di attaccarsi al fondo, permettendo un'elevazione \textbf{continua} e senza interruzioni (niente step di distacco per ogni strato), aumentando drasticamente la velocità di stampa.
+          \end{itemize}
+\end{itemize}
+
+\section{Material Jetting: PolyJet e Multi Jet Modelling (MJM)}
+A differenza delle tecnologie in vasca, qui il liquido viene depositato solo dove serve.
+\begin{itemize}
+    \item \textbf{Principio di funzionamento (PolyJet - Stratasys):} Testine di stampa (simili a quelle a getto d'inchiostro) depositano microscopiche gocce di fotopolimero acrilico, che vengono \textbf{immediatamente} solidificate da lampade UV poste sul carrello.
+    \item \textbf{Strutture di supporto (Importante per l'esame):} I supporti vengono stampati con un \textit{materiale differente} (un materiale gel-like o cera) che è \textbf{solubile} (rimovibile con getto d'acqua o per fusione della cera nel caso del MJM di 3D Systems).
+    \item \textbf{Materiali Digitali e Multi-materiale:} Il vero punto di forza del PolyJet. La macchina può depositare \textit{simultaneamente} materiali diversi (es. 6 materiali + 1 supporto). Miscelando gocce di materiali rigidi e flessibili (Rubber-like) "on-the-fly", si creano materiali compositi con proprietà meccaniche specifiche (es. precisi valori di durezza Shore) e colori diversi.
+\end{itemize}
+\begin{description}
+    \item [Vantaggi] Nessuna vasca di resina liquida, nessun post-trattamento in forno necessario (i pezzi escono già polimerizzati), finitura liscia, supporti solubili (permette geometrie complesse interne), stampa multi-materiale/multi-colore per prototipi iper-realistici.
+    \item [Svantaggi] Si usano materiali termoindurenti (quindi non hanno le stesse identiche prestazioni meccaniche dei termoplastici reali industriali), e il volume di lavoro non può essere sfruttato interamente impilando pezzi uno sull'altro (essendo una deposizione discreta).
+\end{description}

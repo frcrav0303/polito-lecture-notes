@@ -1,0 +1,42 @@
+\documentclass[10pt, a4paper, twocolumn, twoside, landscape]{article}
+
+% Preamble
+\input{../shared_pre/lecture_notes/preamble_twocol.tex} % Shared
+\input{course.tex} %
+
+%
+
+\coursetitle{Programmazione Industriale} %
+\datenotesstarted{Spring 2026} %
+\docdate{\datenotesstarted; upd. \today} %
+\docauthor{Federico Cravero} %
+\lesyear{2025-2026} %
+
+\begin{document}
+
+\nocite{*} %
+\thispagestyle{plain} % Plain formatting on the first page
+\printtitle{} % Print the title
+%----------------------------------------------------------------------------------------
+
+\toc{} % Table of contents
+
+% Lectures
+\chapt[Antonelli]{Robotics Programming}
+\input{lectures/lec_01.tex}
+\input{lectures/lec_02.tex}
+\input{lectures/lec_03.tex}
+\input{lectures/lec_04.tex}
+\input{lectures/lec_05.tex}
+\input{lectures/lec_06.tex}
+\chapt[Minetola]{Additive Manufacturing}
+\input{lectures/lec_07.tex}
+\input{lectures/lec_08.tex}
+\input{lectures/lec_09.tex}
+
+% doc end
+\input{lectures/!last.tex}
+\vfill
+\renewcommand{\refname}{References} % Bibliography title
+\bibliography{citations} % Input bibliography
+\end{document}

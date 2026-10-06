@@ -1,0 +1,34 @@
+\documentclass[12pt, a4paper, twoside]{article}
+
+% Preamble
+\input{../shared_pre/relazione/preamble.tex} % Shared
+\input{course.tex} %
+
+%
+
+\coursetitle{Relazione Primo Tirocinio TPV} %
+\datenotesstarted{Sept 2025} %
+\docdate{\datenotesstarted; agg. \today} %
+\docauthor{Federico Cravero} %
+\lesyear{2025-2026} %
+
+\begin{document}
+
+\nocite{*} %
+\thispagestyle{plain} % Plain formatting on the first page
+\printtitle{} % Print the title
+%----------------------------------------------------------------------------------------
+
+\toc{} % Table of contents
+
+% Lectures
+\input{lectures/intro.tex} \clearpage
+\input{lectures/modellazione.tex}
+\input{lectures/programmazione.tex}
+\input{lectures/tutor.tex}
+
+
+
+% doc end
+\input{lectures/!last.tex}
+\end{document}

@@ -1,0 +1,32 @@
+\documentclass[11pt, a4paper, twoside]{article}
+
+% Preamble
+\input{../shared_pre/lecture_notes/preamble.tex} % Shared
+\input{course.tex} %
+
+%
+
+\coursetitle{Fisica Tecnica e Impianti Termotecnici} %
+\datenotesstarted{Fall 2026} %
+\docdate{\datenotesstarted; upd. \today} %
+\docauthor{Federico Cravero} %
+\lesyear{2026-2027} %
+
+\begin{document}
+
+\nocite{*} %
+\thispagestyle{plain} % Plain formatting on the first page
+\printtitle{} % Print the title
+%----------------------------------------------------------------------------------------
+
+\toc{} % Table of contents
+
+% Lectures
+\input{lectures/lec_01.tex}
+
+% doc end
+\input{lectures/!last.tex}
+\vfill
+\renewcommand{\refname}{References} % Bibliography title
+\bibliography{citations} % Input bibliography
+\end{document}

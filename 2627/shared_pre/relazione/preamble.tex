@@ -1,0 +1,441 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Article Notes
+% Structure Specification File
+% Version 2.3 (16/01/25)
+%
+% File made by frcrav
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	REQUIRED PACKAGES
+%----------------------------------------------------------------------------------------
+
+%\usepackage[includeheadfoot,
+%columnsep=2cm,
+%left=1in,
+%right=1in,
+%top=.5in,
+%bottom=.5in]{geometry} % Margins
+
+% % two col. geometry
+% \usepackage[
+% 	includeheadfoot,
+% 	columnsep=3cm,
+% 	left=1in,
+% 	right=1in,
+% 	top=.5in,
+% 	bottom=.5in
+% ]{geometry} % Margins
+
+% single page geometry
+\usepackage[
+	includeheadfoot,
+	left=2.5cm,
+	right=2.5cm,
+	top=2cm,
+	bottom=2cm
+]{geometry} % Margins
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+
+\usepackage[T1]{fontenc} % For international characters
+
+\usepackage[english]{babel} % Use your language to modify automatic texts. English by default
+
+% Fonts: XCharter, cmbright (overall nice), sourcesanspro (nice contrast with math font), tgpagella (math font is not incredible)
+\usepackage[default]{XCharter} % XCharter as the main font
+%\usepackage[default]{sourcesanspro} % \usepackage[default]
+\newcommand{\xcharter}{\fontfamily{XCharter-TLF}\selectfont} % Used in \lecture section;
+\usepackage{sourcesanspro} % \usepackage[default]
+
+
+%----- Secondary packages
+%\usepackage{showframe} % Show page frame for debugging
+
+\usepackage{natbib} % Use natbib to manage the reference
+\bibliographystyle{apalike} % Citation style
+
+\usepackage{titlesec}
+
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage{wrapfig} % Wrap figures and tables around the text
+
+\usepackage{amsmath, amsthm, amsfonts, amssymb, mathtools, eurosym}
+
+\usepackage{tikz, pgfplots} % plots and figures
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{shapes.geometric, arrows, positioning, backgrounds}
+
+\usepackage{circuitikz} % electrical drawings
+
+\usepackage{listings, lstautogobble}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{hyperref, enumerate, enumitem, color}
+
+\usepackage[acronym]{glossaries}
+
+\usepackage{lipsum}
+
+\usepackage{tabularx} % More table options
+\usepackage{booktabs}
+
+\usepackage{fancyhdr}
+
+\usepackage{marginnote}
+
+\usepackage{etoolbox}
+\usepackage{changepage}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems, skins, most}
+
+\usepackage{xparse}
+
+\usepackage{caption, subcaption}
+
+\usepackage{siunitx}
+
+\usepackage{multicol}
+\usepackage{todonotes}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	CUSTOM COMMANDS
+%----------------------------------------------------------------------------------------
+
+\newcommand{\coursetitle}[1]{\renewcommand{\coursetitle}{#1}} % Define a command for storing the course title
+\newcommand{\doctitle}{\coursetitle} % Define a command to store the article information as it will appear in the title and header
+
+\newcommand{\datenotesstarted}[1]{\renewcommand{\datenotesstarted}{#1}} % Define a command to store the date when notes were first made
+\newcommand{\docdate}[1]{\renewcommand{\docdate}{#1}} % Define a command to store the date line in the title
+\newcommand{\lesyear}[1]{\renewcommand{\lesyear}{#1}}
+
+\newcommand{\docauthor}[1]{\renewcommand{\docauthor}{#1}} % Define a command for storing the article notes author
+
+% Define a command for the structure of the document title
+\newcommand{\printtitle}{
+	\thispagestyle{empty}
+	\begin{center}
+		\textbf{\Huge{\doctitle}} % Style 1
+		%       \textsc{\huge{\doctitle}} % Style 2
+		%       \xcharter\textbf{\huge\textsc{\doctitle}} % Style 3, XCharter family
+
+		\large{\docdate}
+
+		\large{\docauthor}
+
+	\end{center}
+
+	\vfill
+	\begin{center}
+		%	\fontseries{sb}
+		%	\selectfont
+		Relazione sul tirocinio \\
+		Anno {\lesyear}
+		\smallskip
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.35\linewidth]{../shared_pre/lecture_notes/Logo_PoliTo.png}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.3\linewidth]{assets/fablab_pavone.jpg}
+		\end{figure}
+
+
+		\smallskip
+		Politecnico di Torino, Italy
+	\end{center}
+	\newpage
+}
+
+% ----- Intro
+
+% \makeintro{year1/year2}{intro}
+\newcommand{\makeintro}[2] {
+	\bigskip
+	\section*{Introduction}
+	% Use this section to explain the course, exam modes and informations
+	\emph{#2}
+
+	\vfill
+
+	\begin{center}
+		\fontseries{sb}
+		\selectfont
+		Lecture notes \\
+		Year #1
+		\smallskip
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.35\linewidth]{../shared_pre/lecture_notes/Logo_PoliTo.png}
+		\end{figure}
+
+		\smallskip
+		Politecnico di Torino, Italy
+	\end{center}
+}
+
+\newcommand{\toc}{
+	\newpage\pagenumbering{roman}\pagestyle{plain}
+	\tableofcontents
+	\newpage\pagenumbering{arabic}\pagestyle{fancy}
+}
+
+\let\oldquote\quote
+\let\endoldquote\endquote
+\renewenvironment{quote}[2][]
+{\if\relax\detokenize{#1}\relax
+		\def\quoteauthor{#2}%
+	\else
+		\def\quoteauthor{#2~---~#1}%
+	\fi
+	\oldquote}
+{\par\nobreak\smallskip\hfill(\quoteauthor)%
+	\endoldquote\addvspace{\bigskipamount}}
+
+% ----- Math
+
+%\newtheorem{definition}{Definizione}[section]
+%\newtheorem*{definition*}{Definizione}
+%\newtheorem{theorem}{Teorema}[section]
+%\newtheorem*{theorem*}{Teorema}
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{example}{Esempio}[section]
+%\newtheorem*{example*}{Esempio}
+
+% Theorems and math-env
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}{Lemma}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem*{definition*}{Definition}
+\newtheorem{example}{Example}[section]
+\newtheorem*{example*}{Example}
+\newtheorem{exs}{Exercise}
+\newtheorem*{exs*}{Exercise}
+
+\tcbset{
+	examplestyle/.style={
+			sharp corners,
+			colback = white,
+			before skip = 0.2cm,
+			after skip = 0.5cm,
+			boxrule = .5pt,
+			colframe = black,
+			% Opzionale: aggiunge un po' di spazio interno
+			left=2mm, right=2mm, top=1mm, bottom=1mm
+		}
+}
+\tcolorboxenvironment{example}{
+	examplestyle  %
+}
+\newcommand{\solution}{
+	\tcblower           % Questo comando di tcolorbox divide il box in due
+	\textbf{Solution.}~ % Scrive "Solution." all'inizio della parte bianca
+}
+
+
+
+% \tcbset{
+% 	sharp corners,
+% 	colback = white,
+% 	before skip = 0.2cm,    % add extra space before the box
+% 	after skip = 0.5cm      % add extra space after the box
+% }
+% \newtcolorbox{examplebox}{
+% 	boxrule = .5pt,
+% 	colframe = black % frame color
+% }
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark} % Osservazioni
+\newtheorem{note}{Observation}	 % Note
+\newtheorem*{note*}{Observation}	 % Note
+
+
+\NewDocumentEnvironment{sol}{O{}}
+{\par\vspace{1em}%
+	\noindent\textbf{Solution}%
+	\if\relax\detokenize{#1}\relax
+		%
+	\else
+		~(\textit{qst. #1})
+	\fi
+	.\par}
+{\par\vspace{1em}}
+
+%\newlength{\mymargin} \setlength{\mymargin}{2.7mm}
+%
+%\AtBeginEnvironment{theorem}{\begin{adjustwidth}{\mymargin}{}}
+%	\AtEndEnvironment{theorem}{ \end{adjustwidth}}
+%
+%\AtBeginEnvironment{theorem*}{\begin{adjustwidth}{\mymargin}{}}
+%	\AtEndEnvironment{theorem*}{\end{adjustwidth}}
+%
+%\AtBeginEnvironment{definition}{\begin{adjustwidth}{\mymargin}{}}
+%	\AtEndEnvironment{definition}{\end{adjustwidth}}
+%\AtBeginEnvironment{definition*}{\begin{adjustwidth}{\mymargin}{}}
+%	\AtEndEnvironment{definition*}{\end{adjustwidth}}
+%
+%\AtBeginEnvironment{example}{\begin{adjustwidth}{\mymargin}{}}
+%	\AtEndEnvironment{example}{\end{adjustwidth}}
+%\AtBeginEnvironment{example*}{\begin{adjustwidth}{\mymargin}{}}
+%	\AtEndEnvironment{example*}{\end{adjustwidth}}
+%
+%\AtBeginEnvironment{lemma}{\begin{adjustwidth}{\mymargin}{}}
+%	\AtEndEnvironment{lemma}{\end{adjustwidth}}
+%
+%\AtBeginEnvironment{exs}{\begin{adjustwidth}{\mymargin}{}}
+%	\AtEndEnvironment{exs}{\end{adjustwidth}}
+%\AtBeginEnvironment{exs*}{\begin{adjustwidth}{\mymargin}{}}
+%	\AtEndEnvironment{exs*}{\end{adjustwidth}}
+
+% Math mode symbols for common sets and spaces. Example usage: $\R$
+\newcommand{\R}{\mathbb{R}}	% Real numbers
+\newcommand{\C}{\mathbb{C}}	% Complex numbers
+\newcommand{\Q}{\mathbb{Q}}	% Rational numbers
+\newcommand{\Z}{\mathbb{Z}}	% Integers
+\newcommand{\N}{\mathbb{N}}	% Natural numbers
+\newcommand{\F}{\mathcal{F}}	% Calligraphic F for a sigma algebra
+\newcommand{\El}{\mathcal{L}}	% Calligraphic L, e.g. for L^p spaces
+
+% Math mode symbols for probability
+\newcommand{\pr}{\mathbb{P}}	% Probability measure
+\newcommand{\E}{\mathbb{E}}	% Expectation, e.g. $\E(X)$
+\newcommand{\var}{\text{Var}}	% Variance, e.g. $\var(X)$
+\newcommand{\cov}{\text{Cov}}	% Covariance, e.g. $\cov(X,Y)$
+\newcommand{\corr}{\text{Corr}}	% Correlation, e.g. $\corr(X,Y)$
+\newcommand{\B}{\mathcal{B}}	% Borel sigma-algebra
+
+% Other miscellaneous symbols
+\newcommand{\tth}{\text{th}}	% Non-italicized 'th', e.g. $n^\tth$
+\newcommand{\Oh}{\mathcal{O}}	% Big-O notation, e.g. $\O(n)$
+
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator*{\res}{res}
+
+% ----- Code, algo
+
+% ----- Colors and highlighter
+\definecolor{myGreen}{RGB}{48, 209, 88}
+\definecolor{myGreenDark}{RGB}{0, 137, 50}
+
+\newcommand{\emphcustom}[2]{{\color{#1}\textit{#2}}} % Custom color on emph text
+\newcommand{\emphtb}[1]{{\textbf{\textit{#1}}}} % Boldface emph
+\newcommand{\emphred}[1]{{\color{red}\textit{#1}}} % Red emph
+\newcommand{\emphblue}[1]{{\color{blue}\textit{#1}}} % Blue emph
+\newcommand{\emphgreen}[1]{{\color{myGreenDark}\textit{#1}}} % Green emph
+
+\newcommand{\emphr}[1]{{\sffamily\color{red}\MakeUppercase{\textbf{#1}}}} % Red emph
+
+
+\newcommand{\hl}[1]{\colorbox{yellow}{#1}} % Yellow highlither
+\newcommand{\hlb}[1]{\colorbox{yellow}{\textbf{#1}}} % Yellow highlither with bold text
+
+% ----- Other cmds
+
+
+
+%----------------------------------------------------------------------------------------
+%	STRUCTURE MODIFICATIONS
+%----------------------------------------------------------------------------------------
+
+% === Custom Lecture Command ===
+\newcounter{lecture} % Create lecture counter
+\renewcommand{\thelecture}{\ifnum\value{lecture}<10 0\fi\arabic{lecture}}
+
+\newcommand{\lecture}[2]{%
+	\clearpage
+	\refstepcounter{lecture} % increase lecture number automatically
+	%\refstepcounter{lecture} % Lable referencing
+
+	\section*{\xcharter Les \thelecture: #1 \\ \small #2}% prints the title unnumbered
+	\addcontentsline{toc}{section}{Les \thelecture: #1 (#2)}% adds it to the table of contents
+
+	\setcounter{section}{0}% reset section numbering
+	\setcounter{subsection}{0}% reset subsection numbering
+	\setcounter{subsubsection}{0}% reset subsubsection numbering
+}
+
+\newcounter{assignment} % Create lecture counter
+\renewcommand{\theassignment}{\ifnum\value{assignment}<10 0\fi\arabic{assignment}}
+\newcounter{question} % Create lecture counter
+
+\newcommand{\assignment}[2]{%
+	\newpage
+	\refstepcounter{assignment} % increase lecture number automatically
+
+	\section*{\xcharter Ass \theassignment: #1 \\ \small #2}% prints the title unnumbered
+	\addcontentsline{toc}{section}{Ass \theassignment: #1 (#2)}% adds it to the table of contents
+
+	\setcounter{section}{0}% reset section numbering
+	\setcounter{subsection}{0}% reset subsection numbering
+	\setcounter{subsubsection}{0}% reset subsubsection numbering
+	\setcounter{question}{0}
+}
+
+\newcounter{progetto} % Create lecture counter
+\renewcommand{\theprogetto}{\ifnum\value{progetto}<10 0\fi\arabic{progetto}}
+
+\newcommand{\progetto}[2]{%
+	\refstepcounter{progetto} % increase lecture number automatically
+
+	\section*{\xcharter Progetto \theprogetto: #1 \\ \small #2}% prints the title unnumbered
+	\addcontentsline{toc}{section}{Progetto \theprogetto: #1 (#2)}% adds it to the table of contents
+}
+
+% --- Definizione ambiente "Question" ---
+\newtcbtheorem[use counter=question]{qst}{Question}%
+{colback=white,
+	colframe=black!40,
+	fonttitle=\bfseries,
+	coltitle=black,
+	boxrule=0.4pt,
+	sharp corners,
+	enhanced,
+	attach boxed title to top left={yshift=-2mm, xshift=2mm},
+	boxed title style={colback=white, boxrule=0.4pt, colframe=black!40}}%
+{qst}
+
+\setlength{\parskip}{3pt} % Slightly increase spacing between paragraphs
+\setlength{\parindent}{0pt} % Eliminate paragraph indentation.
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+	{3.25ex \@plus1ex \@minus.2ex}%
+	{-1em}%
+	{\normalfont\normalsize\fontseries{b}\selectfont\underline}}
+\makeatother
+
+\makeatletter
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}
+	{3.25ex \@plus1ex \@minus .2ex}
+	{-1em}
+	{\normalfont\normalsize\underline}}
+\makeatother
+% Uncomment to center section titles
+%\usepackage{sectsty}
+%\sectionfont{\centering}
+
+% Uncomment for Roman numerals for section numbers
+%\renewcommand\thesection{\Roman{section}}
+
+\pagestyle{fancy} % Custom fancy header
+\fancyhf{}
+\setlength{\headheight}{14pt} % For single page
+\fancyhead[RE,LO]{\MakeUppercase \doctitle}
+\fancyhead[RO,LE]{\thepage}
+\fancyfoot[C]{Tecnologie per l'Industria Manifatturiera}

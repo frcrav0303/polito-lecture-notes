@@ -1,0 +1,40 @@
+\lecture{Selective Laser Sintering (SLS)}{22~-~09~-~2026}
+%
+\section{Principio di Funzionamento dell'SLS}
+Sviluppato dall'Università di Austin e da EOS, l'SLS è una tecnologia a letto di polvere (Powder Bed Fusion) che utilizza l'energia termica di un laser per fondere selettivamente le particelle polimeriche.
+
+\subsection{Il Processo}
+\begin{enumerate}
+    \item Un rullo (recoater) deposita uno strato di polvere (spessore tipico $0.06 - 0.15$ mm).
+    \item \textbf{Riscaldamento:} La camera è mantenuta a una temperatura di poco inferiore a quella di fusione del polimero per minimizzare i ritiri termici e le deformazioni. L'ambiente è saturo di azoto per evitare l'ossidazione.
+    \item Un laser $CO_2$ scansiona la sezione, innalzando la temperatura solo nei punti necessari per fondere e unire le particelle.
+    \item Il pistone si abbassa e il ciclo si ripete.
+\end{enumerate}
+
+\begin{note}[Differenze L-PBF Polimero vs Metallo]
+    Nell'SLS polimerico il processo è "a caldo", usa laser $CO_2$ a bassa potenza e la polvere non sinterizzata è solo parzialmente riutilizzabile (degrada termicamente). Nel metallo, il processo è "a freddo" (camera fredda), usa laser in fibra ad alta potenza e la polvere è riutilizzabile quasi al 100\%.
+\end{note}
+
+%
+\section{Post-Processamento e Nesting 3D}
+Al termine del processo, i pezzi sono immersi in un blocco di polvere non fusa.
+\begin{itemize}
+    \item \textbf{Raffreddamento:} Il blocco deve raffreddare lentamente all'aria prima dell'estrazione per evitare shock termici e deformazioni (warpage).
+    \item \textbf{Nesting 3D:} Poiché la polvere non fusa agisce da \textbf{supporto naturale}, non sono necessarie strutture di supporto aggiuntive. È possibile posizionare e impilare pezzi liberamente in tutto il volume di stampa per massimizzare la produttività.
+\end{itemize}
+
+%
+\section{Materiali e Applicazioni}
+I materiali principali (es. forniti da EOS e 3D Systems) assicurano prestazioni di livello ingegneristico:
+\begin{itemize}
+    \item \textbf{Poliammidi (PA12, PA11):} Materiale multiuso per eccellenza (robusto, chimicamente resistente). Disponibile puro o caricato (vetro, alluminio per conducibilità/rigidità, fibra di carbonio).
+    \item \textbf{Elastomeri (TPE, TPU):} Per componenti flessibili (guarnizioni, ammortizzatori).
+    \item \textbf{Polistirene (PS / CastForm):} Ideale per creare modelli sacrificali per microfusione, poiché lascia bassissimi residui di ceneri.
+    \item \textbf{Polimeri ad alte prestazioni (PEEK):} Per resistenza alle alte temperature e sostituzione dei metalli in ambito aerospaziale/automotive.
+\end{itemize}
+
+\subsection{Vantaggi e Limiti}
+\begin{description}
+    \item[Vantaggi:] Assenza di supporti; saturazione completa del volume (nesting); inserimento di pezzi a job avviato; materiali definitivi (pronto per l'uso funzionale); buona rugosità.
+    \item[Limiti:] Gamma di materiali limitata rispetto allo stampaggio a iniezione; tempi lunghi per il cambio materiale in macchina; tempi di riscaldamento e raffreddamento lenti.
+\end{description}

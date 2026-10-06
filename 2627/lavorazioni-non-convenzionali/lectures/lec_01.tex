@@ -1,0 +1,51 @@
+\lecture{Tecnologie di fabbricazione additiva per materiali
+    polimerici}{22~-~09~-~2026}
+%
+\section{Classificazione delle Tecnologie per Polimeri}
+Le tecnologie di Additive Manufacturing per materiali polimerici si classificano in base allo stato del materiale di partenza:
+\begin{itemize}
+    \item \textbf{Liquido}: Fotopolimerizzazione tramite Lampada UV (DLP, Polyjet) o Laser (SLA).
+    \item \textbf{Solido}: Estrusione (FDM, CFF).
+    \item \textbf{Polvere}: Fusione su letto di polvere (SLS, MJF) o con utilizzo di leganti (3DP).
+    \item \textbf{Deposizione (da fuso)}: Drop on Demand (DoD) e Arburg Plastic Freeforming (APF).
+\end{itemize}
+
+%
+\section{Drop On Demand (DoD)}
+Sviluppato originariamente da Sanders (poi Solidscape/Stratasys), il processo DoD si basa sulla deposizione a gocce di polimero fuso.
+
+\subsection{Processo e Funzionamento}
+\begin{itemize}
+    \item Utilizza due testine di stampa (getti singoli): una per il materiale del pezzo e una per il materiale di supporto.
+    \item Crea strati estremamente sottili (es. $13~\mu m$).
+    \item \emph{Fase chiave}: Dopo la deposizione, una fresa (mill) spiana lo strato per garantire la perfetta planarità prima del livello successivo.
+\end{itemize}
+
+\subsection{Materiali e Supporti}
+\begin{description}
+    \item[Materiali di costruzione:] Termoplastici non tossici a basso punto di fusione (simil-cera), perfetti per la calcinazione senza residui.
+    \item[Materiali di supporto:] Cere solubili in apposite soluzioni acquose a temperature controllate (es. $52^{\circ}C$). L'uso del supporto solubile elimina i rischi di rottura legati alla rimozione manuale, specialmente per geometrie fini.
+\end{description}
+
+\subsection{Applicazioni, Vantaggi e Limiti}
+\begin{itemize}
+    \item \textbf{Applicazioni:} Modelli per fusione a cera persa (gioielleria, settore dentale, micro-meccanica di precisione).
+    \item \textbf{Vantaggi:} Eccellenti tolleranze dimensionali, ottima finitura superficiale, possibilità di pareti sottilissime, assenza di post-trattamento complesso.
+    \item \textbf{Limiti:} Materiali con scarse proprietà meccaniche, volumi di lavoro ridotti, velocità di costruzione molto bassa (a causa della fresatura), impossibilità di nesting 3D puro (saturazione volume).
+\end{itemize}
+
+%
+\section{Arburg Plastic Freeforming (APF)}
+Processo sviluppato da Arburg, noto produttore di macchine per stampaggio a iniezione.
+
+\subsection{Principio di Funzionamento}
+Unisce la plasticizzazione tipica dello stampaggio a iniezione (tramite vite senza fine) alla deposizione additiva.
+\begin{itemize}
+    \item Il materiale di partenza è un \textbf{granulato standard} (economico e ampiamente disponibile).
+    \item La deposizione avviene a gocce pulsate tramite un attuatore piezoelettrico montato sull'ugello.
+    \item Permette la realizzazione di pezzi \textbf{multimateriale}.
+\end{itemize}
+
+\begin{remark}[Parametri di processo]
+    Lo spessore del layer (da $100~\mu m$ a $300~\mu m$) influenza direttamente la velocità di produzione e la densità della parte: strati sottili generano parti molto dense a velocità basse; strati spessi sono più veloci ma con densità inferiore.
+\end{remark}
