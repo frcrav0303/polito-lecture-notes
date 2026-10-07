@@ -1,0 +1,54 @@
+\lecture{Macchine Operatrici}{07~-~10~-~2026}
+%
+\section{Pompe di circolazione}
+% La pompa centrifuga è essenzialmente costituita da una
+% girante che ruota eccentrica in una camera chiusa
+% (chiocciola), aspirando liquido dalla parte centrale e
+% inviandolo in posizione periferica dove è poi raccolto
+% in una tubazione. La forma del profilo della girante,
+% curvato all’indietro, serve per mantenere il fluido
+% aderente alla superficie e nel contempo offrire una
+% sezione di passaggio crescente, che consente di ridurre
+% la velocità in uscita (l’energia cinetica si converte in
+% pressione)
+Vengono utilizzate per vincere le cadute di pressione e le variazioni positive di quota in un impianto idraulico.
+
+Le pompe utilizzate in un impianto termotecnico sono tipicamente centrifughe.
+%
+\paragraph{Centrifughe} Sfruttano la forza centrifuga per concentrare il liquido nella parte esterna di un dispositivo a geometria cilindrica, incrementandone così la pressione e richiamando altro fluido nella zona centrale, dove la pressione è inferiore.
+%
+\subsection{Prevalenza}
+Un'importante grandezza per il dimensionamento delle pompe è la \emphgreen{prevalenza}.
+
+Richiamiamo l'equazione di conservazione dell'energia meccanica, scritta in termini di pressione:
+\[
+    p_{1} + \rho \frac{v^{2}_{1}}{2} + \rho \cdot g \cdot z_{1} + \Delta p_{t} = p_{2} + \rho \frac{v_{2}^{2}}{2} + \rho \cdot g \cdot z_{2} + \Delta p_{a}
+\]
+Tutti i termini che compongono questa equazione sono di fatto delle pressioni. La pompa di circolazione è chiamata a vincere tutte le differenze di pressione che si verificano tra l'ingresso e l'uscita:
+\[
+    \Delta p_{t} = (p_{2}-p_{1}) + (\rho \cdot \frac{v_{2}^{2}}{2}-\rho \cdot \frac{v_{1}^{2}}{2} ) + (\rho \cdot g \cdot z_{2} - \rho \cdot g \cdot z_{1})+ \Delta p_{a}
+\]
+in cui i termini a secondo membro rappresentano:
+\begin{itemize}
+    \item variazione di pressione statica: $ (p_{2}-p_{1}) $
+    \item variazione di pressione cinetica: $ (\rho \cdot \frac{v_{2}^{2}}{2}-\rho \cdot \frac{v_{1}^{2}}{2} ) $
+    \item variazione di quota potenziale (gravitazionale, anche detta geodetica): $ (\rho \cdot g \cdot z_{2} - \rho \cdot g \cdot z_{1}) $
+    \item perdite di pressione per l'attrito: $ \Delta p_{a} $
+\end{itemize}
+Le variazione di energia cinetica risulta normalmente trascurabile, quindi possiamo semplificare l'equazione in:
+\[
+    \Delta p_{t} = (p_{2}-p_{1}) + \rho \cdot g \cdot (z_{2}-z_{1}) + \Delta p_{a}
+\]
+La valutazione in termini di quota del contributo legato alla pompa di circolazione si definisce \emphgreen{prevalenza}, viene indicata come $ H $ e si ottiene dalla precedente relazione dividendo tutti i termini per la densità e l'accelerazione di gravità:
+\begin{formula}[Prevalenza]
+    \[
+        H = \frac{(p_{2}-p_{1})}{\rho \cdot g} + (z_{2}-z_{1}) + \frac{\Delta p_{a}}{\rho \cdot g}
+    \]
+\end{formula}
+\begin{itemize}
+    \item Il termine $ \frac{(p_{2}-p_{1})}{\rho \cdot g} $ si annulla nel caso in cui la pressione nella sezione iniziale e finale siano uguali (es. circuito idraulico in cui viene prelevata acqua da un recipiente $ A $ aperto e viene inviata ad un recipiente $ B $ aperto: entrambe le superfici sono soggette alla pressione atmosferica, la differenza di pressione statica è nulla);
+    \item il termine $ (z_{2}-z_{1}) $ è nullo nel caso di un impianto idraulico \textbf{orizzontale}. Il termine è anche complessivamente nullo nel caso di un \emph{circuito chiuso}, in quanto la sezione iniziale e finale, che coincidono, si trovano alla stessa quota;
+\end{itemize}
+
+%
+\subsection{Potenza assorbita dalla pompa}

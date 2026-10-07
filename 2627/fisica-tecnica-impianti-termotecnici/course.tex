@@ -1,3 +1,49 @@
 %
 \newacronym{mat}{Matlab}{Matrix Laboratory}
 \newacronym{ide}{IDE}{Integrated Development Environment}
+
+% 1. Definisce un nuovo stile di teorema
+\newtheoremstyle{solotitolo}
+{} % Spazio sopra
+{} % Spazio sotto
+{\normalfont} % Font del testo interno (usa \itshape se preferisci il corsivo)
+{} % Indentazione
+{\bfseries} % Font del titolo
+{} % Punteggiatura dopo il titolo (es. inserisci "." se vuoi un punto)
+{ } % Spazio dopo il titolo (usa { } se vuoi il testo sulla stessa riga)
+{\thmnote{#3}} % LA MAGIA: Stampa SOLO il parametro passato tra le parentesi quadre
+
+% 2. Applica lo stile e crea l'ambiente (usa l'asterisco per togliere i contatori di default)
+\theoremstyle{solotitolo}
+\newtheorem*{formula}{}
+
+% 3. Il tuo stile tcolorbox (invariato)
+\tcbset{
+    formulastyle/.style={
+            sharp corners,
+            colback = black!5, % <-- Modificato qui (5% nero, 95% bianco)
+            before skip = 0.2cm,
+            after skip = 0.5cm,
+            boxrule = .5pt,
+            colframe = black,
+            % Opzionale: aggiunge un po' di spazio interno
+            left=2mm, right=2mm, top=1mm, bottom=1mm
+        }
+}
+\tcolorboxenvironment{formula}{
+    formulastyle
+}
+
+
+\renewcommand{\lecture}[2]{%
+    \clearpage
+    \refstepcounter{lecture} % increase lecture number automatically
+    %\refstepcounter{lecture} % Lable referencing
+
+    \section*{\xcharter Mod \thelecture: #1 \\ \small #2}% prints the title unnumbered
+    \addcontentsline{toc}{section}{Mod \thelecture: #1 (#2)}% adds it to the table of contents
+
+    \setcounter{section}{0}% reset section numbering
+    \setcounter{subsection}{0}% reset subsection numbering
+    \setcounter{subsubsection}{0}% reset subsubsection numbering
+}

@@ -9,11 +9,11 @@ Il principale fluido che consideriamo è l'acqua.
 
 \subsection{Densità}
 Un importante proprietà dei fluidi è la \textbf{densità}, definita dal rapporto tra la massa del fluido e il volume occupato nelle condizioni in cui si trova:
-\begin{theorem}[Densità]\label{th:densita}
+\begin{formula}[Densità]\label{th:densita}
     \[
         \rho = \frac{M}{V} \ (\si{kg/m^{3}})
     \]
-\end{theorem}
+\end{formula}
 Nel caso dei liquidi la densità varia in funzione di \emph{temperatura} e \emph{pressione}, ma in molte applicazioni pratiche
 (specialmente quando le variazioni di temperatura non sono elevate) si può assumere che la densità sia costante.
 \begin{example}
@@ -27,11 +27,11 @@ Si consideri un liquido inserito all'interno di un contenitore molto esteso, tal
 
 La forza da applicare per unità di superficie del liquido $ \frac{F}{A} $ dipende dalla velocità e dall'altezza del liquido,
 secondo la seguente relazione
-\begin{theorem}[Viscosità]
+\begin{formula}[Viscosità]
     \[
         \frac{F}{A}= \mu \frac{v}{h} \ (\si{Pa \cdot s})
     \]
-\end{theorem}
+\end{formula}
 Nella quale $ \mu $ (mu) è una proprietà dei fluidi chiamata viscosità dinamica e si misura in $ \si{Pa \cdot s} $; la viscosità dipende dalle condizioni in cui si trova il fluido e diminuisce all'aumentare della temperatura. Per i liquidi la viscosità dipende scarsamente dalla pressione, se non per valori molto elevati di quest'ultima.
 Vedi figura \ref{fig:viscosita}.
 
@@ -45,12 +45,12 @@ Vedi figura \ref{fig:viscosita}.
 \subsection{Pressione}
 
 Si consideri un liquido fermo all'interno di un contenitore: la pressione sulla superficie (pelo) del liquido è la pressione atmosferica $ \si{p_{a}} $, la pressione all'interno aumenta all'aumentare della distanza dalla superficie secondo questa relazione:
-\begin{theorem}[Pressione]\label{th:pressione}
+\begin{formula}[Pressione]\label{th:pressione}
     \[
         p = p_{a} + \rho \cdot g \cdot h \ (\si{Pa})
     \]
     in cui $ p_{a} $ è la pressione atmosferica, $ g $ è l'accelerazione di gravità $ 9.81 \si{m/s^2} $, $ h $ è la distanza dalla superficie libera del liquido e $ \rho $ è la densità del liquido.
-\end{theorem}
+\end{formula}
 Vedi figura \ref{fig:pressione}.
 \begin{figure}
     \centering
@@ -63,13 +63,13 @@ Vedi figura \ref{fig:pressione}.
 %
 \subsection{Portata in massa}
 La portata in massa $ \dot{m} $ è definita come la massa nell'unità di tempo che passa attraverso una sezione aperta.
-\begin{theorem}[Portata in massa]
+\begin{formula}[Portata in massa]
     Considerando un condotto di sezione $ A $ che trasporta acqua, la portata in massa è definita come:
     \[
         \dot{m} = \rho \cdot A \cdot v \ (\si{kg/s})
     \]
     in cui $ v $ è la velocità perpendicolare alla sezione $ A $ e $ \rho $ è la densità del fluido.
-\end{theorem}
+\end{formula}
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{assets/sezionea.png}
@@ -115,33 +115,33 @@ Il regime di moto determina l'attrito nel condotto e, di conseguenza, l'energia 
 
 %
 \subsubsection{Numero di Reynolds}
-\begin{theorem}[Numero di Reynolds]
+\begin{formula}[Numero di Reynolds]
     L'espressione per un condotto cilindrico è:
     \[
         R_{e} = \frac{\rho \cdot v \cdot D}{\mu}
     \]
     in cui $ D $ è il diametro del condotto, $ \rho $ è la densità del fluido, $ v $ è la velocità del fluido e $ \mu $ è la viscosità del fluido.
-\end{theorem}
+\end{formula}
 
 %
 \subsubsection{Conservazione della quantità di moto}
 Il moto dei fluidi è governato dall'equazione di conservazione della quantità di moto.
-\begin{theorem}[Conservazione della quantità di moto]
+\begin{formula}[Conservazione della quantità di moto]
     \[
         (p_{2}-p_{1}) + \rho \cdot \frac{v_{2}^{2}-v_{1}^{2}}{2} + \rho \cdot g \cdot (z_{2}-z_{1}) + l_{a} - l_{t}
     \]
     nella quale gli indici 1 e 2 sono associati alla \emphgreen{sezione} di uscita e di ingresso del condotto, $ p $ è la \emphgreen{pressione}, $ \rho $ è la \emphgreen{densità} del fluido, $ v $ è la \emphgreen{velocità} del fluido, $ z $ è la quota, $ l_{a} $ è il \emphgreen{lavoro di attrito} per unità di massa e $ l_{t} $ è il \emphgreen{lavoro tecnico} per unità di massa effettuato dalla pompa di circolazione (o dal ventilatore in caso di gas).
-\end{theorem}
+\end{formula}
 
 %
 \subsubsection{Lavoro di attrito}
-Il lavoro di attrito si esprime come:
-\begin{theorem}[Lavoro di attrito]
+\begin{formula}[Lavoro di attrito]
+    Il lavoro di attrito si esprime come:
     \[
         l_{a} = f \cdot \frac{L}{D} \cdot \rho \cdot \frac{v_{2}}{2} + \sum \beta_{i} \cdot \rho \cdot \frac{v_{2}}{2}
     \]
     in cui $ f $ è il fattore di attrito, $ L $ è la lunghezza del condotto, $ D $ è il diametro del condotto e la sommatoria $ \beta_{i} $ si riferisce al contributo legato a tutte le perdite di attrito concentrato il cui valore si trova catalogato.
-\end{theorem}
+\end{formula}
 
 \begin{figure}
     \centering
